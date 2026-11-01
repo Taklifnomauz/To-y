@@ -112,21 +112,46 @@
       transform: translateX(-50%);
       box-sizing: border-box;
     }
+
     .curtain-message {
       padding: clamp(22px, 4vw, 38px);
-      border: 1px solid rgba(255,224,170,.68); border-radius: 18px;
-      background: rgba(55,8,22,.72); box-shadow: 0 12px 32px rgba(0,0,0,.28);
-      backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
-      color: #fff0df; text-align: center;
+      border: 1px solid rgba(255,224,170,.68);
+      border-radius: 18px;
+      background: rgba(55,8,22,.72);
+      box-shadow: 0 12px 32px rgba(0,0,0,.28);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      color: #fff0df;
+      text-align: center;
     }
-    .curtain-message .eyebrow { margin-bottom: 14px; color: #f0c77f; font-size: .8rem; letter-spacing: .12em; }
+
+    .curtain-message .eyebrow {
+      margin-bottom: 14px;
+      color: #f0c77f;
+      font-size: .8rem;
+      letter-spacing: .12em;
+    }
+
     .curtain-invitation {
-      margin: 0 auto 12px; max-width: 570px; color: #fff0df;
+      margin: 0 auto 12px;
+      max-width: 570px;
+      color: #fff0df;
       font: 500 clamp(.95rem,2.4vw,1.18rem)/1.55 "Cormorant Garamond",serif;
       text-shadow: 0 1px 5px rgba(0,0,0,.65);
     }
-    .curtain-last { margin-bottom: 0; color: #ffe0a6; font-weight: 600; }
-    .curtain-copy .round-link { display: grid; margin: 16px auto 0; background: rgba(55,8,22,.6); }
+
+    .curtain-last {
+      margin-bottom: 0;
+      color: #ffe0a6;
+      font-weight: 600;
+    }
+
+    .curtain-copy .round-link {
+      display: grid;
+      margin: 16px auto 0;
+      background: rgba(55,8,22,.6);
+    }
+
     @media(max-width:600px) {
       .curtain-copy {
         top: auto;
@@ -135,9 +160,22 @@
         width: 90%;
         transform: translateX(-50%);
       }
-      .curtain-message { padding: 18px 16px; border-radius: 15px; }
-      .curtain-invitation { font-size: .98rem; line-height: 1.45; margin-bottom: 9px; }
-      .curtain-message .eyebrow { margin-bottom: 10px; font-size: .72rem; }
+
+      .curtain-message {
+        padding: 18px 16px;
+        border-radius: 15px;
+      }
+
+      .curtain-invitation {
+        font-size: .98rem;
+        line-height: 1.45;
+        margin-bottom: 9px;
+      }
+
+      .curtain-message .eyebrow {
+        margin-bottom: 10px;
+        font-size: .72rem;
+      }
     }
 
     /* RSVP: oq karta yo‘q, fon rasmi ko‘rinib turadi */
@@ -494,7 +532,7 @@
           <span class="groom-name">Xasanjon</span>
           <span class="name-ampersand">&amp;</span>
           <span class="bride-name">Dilnoza</span>
-        </h2> 
+        </h2>
         <p class="family-name">Hurmat bilan Mahkamov oilasi</p>
 
         <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
@@ -521,7 +559,7 @@
         <div class="venue">
           <p class="eyebrow">Manzil</p>
           <h3>Asr to‘yxonasi</h3>
-          <p>Toshkent, Beruniy koʻchasi, 6/2 </p>
+          <p>Toshkent, Beruniy koʻchasi, 6/2</p>
           <a
             class="gold-button small-button"
             id="mapLink"
@@ -592,14 +630,18 @@
     </section>
   </main>
 
+  <audio id="weddingMusic" src="music.mp3" loop preload="auto"></audio>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 
   <script>
     const openButton = document.getElementById("openInvitation");
     const cover = document.getElementById("cover");
+    const music = document.getElementById("weddingMusic");
 
     openButton.addEventListener("click", () => {
+      music.play().catch(error => console.log("Musiqa ishga tushmadi:", error));
       cover.classList.add("opening");
       openButton.disabled = true;
 
