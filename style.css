@@ -115,54 +115,43 @@ p {
   background: #2a0712;
 }
 
-/* A va M harflari darvozaning ikki tomonida */
+/* Birinchi oynada A va M yozuvlari ko‘rinmaydi */
 .gate-initials {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  color: #f7e4bd;
-  font: italic clamp(3rem, 8vw, 6rem)/1 "Cormorant Garamond", serif;
-  text-shadow: 0 2px 18px #16040a;
+  display: none;
 }
 
-.initial-a,
-.initial-m {
-  position: absolute;
-  top: 32%;
-  transform: translate(-50%, -50%);
-}
-
-.initial-a {
-  left: 42%;
-}
-
-.initial-m {
-  left: 58%;
-}
-
-/* Ochish tugmasi */
+/* Katta “Ochish” tugmasi */
 .gate-open {
   position: absolute;
   z-index: 3;
   left: 50%;
   bottom: 8%;
   transform: translateX(-50%);
-  padding: 14px 28px;
+  min-width: 190px;
+  padding: 17px 38px;
   border: 1px solid var(--gold);
-  border-radius: 30px;
+  border-radius: 32px;
   background: #260a12ed;
   color: #f7e4bd;
-  font: 500 0.85rem "DM Sans", sans-serif;
+  font: 600 1.1rem "DM Sans", sans-serif;
+  letter-spacing: 0.03em;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 4px 18px #16040a66;
-  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 6px 22px #16040a88;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .gate-open:hover {
   background: #6d2638;
-  transform: translateX(-50%) scale(1.04);
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 8px 28px #16040aaa;
+}
+
+.gate-open:active {
+  transform: translateX(-50%) scale(0.98);
 }
 
 .gate-open:disabled {
@@ -529,18 +518,11 @@ p {
 
 /* Telefon ekranlari */
 @media (max-width: 600px) {
-  .initial-a {
-    left: 40%;
-  }
-
-  .initial-m {
-    left: 60%;
-  }
-
   .gate-open {
     bottom: 7%;
-    padding: 13px 22px;
-    font-size: 0.8rem;
+    min-width: 175px;
+    padding: 15px 30px;
+    font-size: 1rem;
   }
 
   .details-card,
