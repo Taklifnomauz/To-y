@@ -283,7 +283,7 @@ p {
   padding: 36px 18px;
   background:
     linear-gradient(rgba(38, 10, 18, 0.16), rgba(38, 10, 18, 0.22)),
-    url("saroy(4).png") center center / cover no-repeat;
+    url("Image/saroy.png") center center / cover no-repeat;
   color: var(--ink);
 }
 
@@ -417,7 +417,7 @@ p {
   bottom: 10px;
 }
 
-/* 4 — RSVP: tayyor bezakli fon rasmi ochiq qoladi */
+/* 4 — RSVP */
 .scene-rsvp {
   display: grid;
   place-items: center;
@@ -646,7 +646,7 @@ p {
   }
 }
 
-/* RSVP sahnasi: telefon va kompyuterda fon bilan matn ustma-ust tushmasin */
+/* RSVP sahnasi: rasm fon bilan matn ustma-ust tushmasin */
 .scene.scene-rsvp {
   position: relative;
   min-height: 100svh;
@@ -658,7 +658,6 @@ p {
   isolation: isolate;
 }
 
-/* Bezakli rasm butun sahnani qoplaydi; rasmning o‘zidagi yozuvlar saqlanadi */
 .scene.scene-rsvp > .scene-image {
   position: absolute;
   inset: 0;
@@ -685,7 +684,7 @@ p {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Inputlar aniq o‘qilsin, lekin katta oq panel hosil qilmasin */
+/* Inputlar aniq ko‘rinsin */
 .scene.scene-rsvp #rsvpForm input,
 .scene.scene-rsvp #rsvpForm select {
   background: rgba(38, 10, 18, 0.78);
