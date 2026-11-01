@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .scene { position: relative; isolation: isolate; overflow: hidden; }
+    .scene {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
     .scene-image {
       position: absolute;
       inset: 0;
@@ -22,15 +27,26 @@
       object-position: center;
       z-index: -2;
     }
+
     .scene::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(20,5,12,.18), rgba(20,5,12,.48));
+      background: linear-gradient(
+        180deg,
+        rgba(20, 5, 12, .18),
+        rgba(20, 5, 12, .48)
+      );
       z-index: -1;
       pointer-events: none;
     }
-    .scene-copy, .details-card, .rsvp-card { position: relative; z-index: 1; }
+
+    .scene-copy,
+    .details-card,
+    .rsvp-card {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 
@@ -39,37 +55,60 @@
 
     <!-- 1-sahna: darvoza -->
     <section class="scene scene-cover" id="cover">
-      <img class="scene-image" src="images/darvoza.png" alt="To‘y darvozasi va gullar bilan bezatilgan yo‘lak">
+      <img
+        class="scene-image"
+        src="Image/darvoza.png"
+        alt="To‘y darvozasi va gullar bilan bezatilgan yo‘lak"
+      >
 
       <div class="scene-copy cover-copy">
         <p class="eyebrow">Elektron taklifnoma</p>
         <h1>Aziza <span>&amp;</span> Mirjalol</h1>
         <p class="cover-date">18 · 12 · 2026</p>
-        <a class="gold-button" href="#scene-two">Taklifnomani ochish <span>↗</span></a>
+        <a class="gold-button" href="#scene-two">
+          Taklifnomani ochish <span>↗</span>
+        </a>
         <p class="scroll-hint">Pastga suring ↓</p>
       </div>
     </section>
 
     <!-- 2-sahna: parda va kelin-kuyov -->
     <section class="scene scene-curtain" id="scene-two">
-      <img class="scene-image" src="images/parda.png" alt="Ochilayotgan pardalar oldidagi kelin-kuyov">
+      <img
+        class="scene-image"
+        src="Image/parda.png"
+        alt="Ochilayotgan pardalar oldidagi kelin-kuyov"
+      >
 
       <div class="scene-copy curtain-copy">
         <p class="eyebrow">Bir umrga birga</p>
         <div class="initials">A <span>&amp;</span> M</div>
-        <p class="curtain-note">Hayotimizning eng go‘zal kuniga xush kelibsiz</p>
+        <p class="curtain-note">
+          Hayotimizning eng go‘zal kuniga xush kelibsiz
+        </p>
         <a class="round-link" href="#scene-three" aria-label="Keyingi sahifa">↓</a>
       </div>
     </section>
 
     <!-- 3-sahna: sana va manzil -->
     <section class="scene scene-details" id="scene-three">
-      <img class="scene-image" src="images/saroy.png" alt="To‘yxona va bezatilgan hovli">
+      <img
+        class="scene-image"
+        src="Image/saroy.png"
+        alt="To‘yxona va bezatilgan hovli"
+      >
 
       <div class="details-card">
-        <p class="eyebrow">Sizni oilamizning eng muhim kuniga taklif qilamiz</p>
+        <p class="eyebrow">
+          Sizni oilamizning eng muhim kuniga taklif qilamiz
+        </p>
+
         <h2>Aziza <span>&amp;</span> Mirjalol</h2>
-        <p class="intro">Hayotimizning yangi sahifasini siz azizlarimiz bilan birga boshlashdan mamnunmiz.</p>
+
+        <p class="intro">
+          Hayotimizning yangi sahifasini siz azizlarimiz bilan birga
+          boshlashdan mamnunmiz.
+        </p>
 
         <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
           <div><strong id="days">—</strong><span>kun</span></div>
@@ -80,33 +119,63 @@
 
         <div class="detail-row">
           <span class="detail-icon">▣</span>
-          <div><small>Sana</small><strong>18-dekabr, 2026-yil</strong></div>
+          <div>
+            <small>Sana</small>
+            <strong>18-dekabr, 2026-yil</strong>
+          </div>
+
           <span class="detail-icon">◷</span>
-          <div><small>Vaqt</small><strong>Soat 18:00</strong></div>
+          <div>
+            <small>Vaqt</small>
+            <strong>Soat 18:00</strong>
+          </div>
         </div>
 
         <div class="venue">
           <p class="eyebrow">Manzil</p>
           <h3>Marvarid to‘yxonasi</h3>
           <p>Toshkent shahri, manzil keyin aniqlashtiriladi</p>
-          <a class="gold-button small-button" id="mapLink" href="https://yandex.com/maps/" target="_blank" rel="noopener">Xaritada ko‘rish ↗</a>
+          <a
+            class="gold-button small-button"
+            id="mapLink"
+            href="https://yandex.com/maps/"
+            target="_blank"
+            rel="noopener"
+          >
+            Xaritada ko‘rish ↗
+          </a>
         </div>
       </div>
     </section>
 
     <!-- 4-sahna: RSVP -->
     <section class="scene scene-rsvp" id="scene-four">
-      <img class="scene-image" src="images/rsvp.png" alt="To‘yga kelishni tasdiqlash sahnasi">
+      <img
+        class="scene-image"
+        src="Image/rsvp.png"
+        alt="To‘yga kelishni tasdiqlash sahnasi"
+      >
 
       <div class="rsvp-card">
         <div class="envelope" aria-hidden="true">✉</div>
+
         <p class="eyebrow">Ishtirokingiz biz uchun muhim</p>
-        <p class="rsvp-intro">Iltimos, quyidagi ma’lumotlarni to‘ldirib, to‘yimizda ishtirok etishingizni tasdiqlang.</p>
+
+        <p class="rsvp-intro">
+          Iltimos, quyidagi ma’lumotlarni to‘ldirib, to‘yimizda
+          ishtirok etishingizni tasdiqlang.
+        </p>
 
         <form id="rsvpForm">
           <label>
             <span>Ism va familiyangiz</span>
-            <input name="guest_name" type="text" placeholder="Masalan, Dilnoza Karimova" maxlength="120" required>
+            <input
+              name="guest_name"
+              type="text"
+              placeholder="Masalan, Dilnoza Karimova"
+              maxlength="120"
+              required
+            >
           </label>
 
           <label>
@@ -129,7 +198,10 @@
             </select>
           </label>
 
-          <button class="gold-button submit-button" type="submit">Javobni yuborish <span>✓</span></button>
+          <button class="gold-button submit-button" type="submit">
+            Javobni yuborish <span>✓</span>
+          </button>
+
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
 
@@ -139,6 +211,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
