@@ -12,8 +12,8 @@ const musicToggle = document.getElementById("musicToggle");
 let musicPlaying = false;
 
 document.getElementById("openInvite").addEventListener("click", async () => {
-  cover.classList.add("hidden");
-  invitation.classList.remove("hidden");
+  cover.classList.add("opening");
+  setTimeout(() => { cover.classList.add("hidden"); invitation.classList.remove("hidden"); }, 1850);
   window.scrollTo({top:0,behavior:"smooth"});
   try { await music.play(); musicPlaying = true; musicToggle.innerHTML = "♫ <span>Musiqa yoqilgan</span>"; }
   catch { musicToggle.innerHTML = "♫ <span>Musiqani yoqish</span>"; }
