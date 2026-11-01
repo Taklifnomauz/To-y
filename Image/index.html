@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#260a12">
+  <title>X &amp; D — Taklifnoma</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Sahna rasmlari */
+    .scene {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .scene-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+    }
+
+    .scene::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(20, 5, 12, .18),
+        rgba(20, 5, 12, .48)
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .scene-copy,
+    .details-card,
+    .rsvp-card {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Darvozani ochish tugmasi */
+    .gate-open {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: 8%;
+      transform: translateX(-50%);
+      min-width: 190px;
+      padding: 17px 38px;
+      border: 1px solid #d8b77a;
+      border-radius: 32px;
+      background: #260a12ed;
+      color: #f7e4bd;
+      font: 600 1.1rem "DM Sans", sans-serif;
+      letter-spacing: .03em;
+      white-space: nowrap;
+      cursor: pointer;
+      box-shadow: 0 6px 22px #16040a88;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+
+    .gate-open:hover {
+      background: #6d2638;
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 8px 28px #16040aaa;
+    }
+
+    .gate-open:active {
+      transform: translateX(-50%) scale(.98);
+    }
+
+    .gate-open:disabled {
+      cursor: wait;
+    }
+
+    .scene-cover.opening .scene-image {
+      animation: gate-approach 2.5s ease-in forwards;
+    }
+
+    .scene-cover.opening .gate-open {
+      animation: fade-away .3s ease-in forwards;
+    }
+
+    @keyframes gate-approach {
+      from { transform: scale(1); }
+      to { transform: scale(1.7); }
+    }
+
+    @keyframes fade-away {
+      to { opacity: 0; }
+    }
+
+    /* RSVP: oq karta yo‘q, fon rasmi ko‘rinib turadi */
+    .scene-rsvp {
+      background: transparent !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 35px 18px;
+      min-height: 100vh;
+    }
+
+    .scene-rsvp::before {
+      background: rgba(25, 5, 12, .12);
+    }
+
+    .rsvp-card {
+      width: min(100%, 680px);
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 48px);
+      color: #f8e9d5;
+      /* Karta foni olib tashlandi — RSVP orqa rasmi to‘liq ko‘rinadi */
+      background: transparent !important;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .rsvp-card .envelope {
+      color: #e9b96f;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .rsvp-card .eyebrow {
+      color: #e7c58e;
+      text-align: center;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .76rem;
+    }
+
+    .rsvp-intro {
+      color: #f4e4d7;
+      text-align: center;
+      line-height: 1.65;
+      margin: 16px auto 28px;
+      max-width: 520px;
+    }
+
+    #rsvpForm {
+      display: grid;
+      gap: 18px;
+    }
+
+    #rsvpForm label {
+      display: grid;
+      gap: 8px;
+      color: #f3dfc8;
+      font-family: "DM Sans", sans-serif;
+      font-size: .92rem;
+    }
+
+    #rsvpForm input,
+    #rsvpForm select {
+      width: 100%;
+      min-height: 54px;
+      box-sizing: border-box;
+      padding: 13px 16px;
+      border: 1px solid rgba(237, 194, 143, .75);
+      border-radius: 13px;
+      outline: none;
+      background: rgba(38, 10, 18, .82);
+      color: #fff4e5;
+      font: 400 1rem "DM Sans", sans-serif;
+      box-shadow: inset 0 1px 8px rgba(0, 0, 0, .12);
+      transition: border-color .2s, background .2s, box-shadow .2s;
+    }
+
+    #rsvpForm input::placeholder {
+      color: rgba(255, 238, 221, .58);
+    }
+
+    #rsvpForm input:focus,
+    #rsvpForm select:focus {
+      border-color: #ffc66f;
+      background: rgba(38, 10, 18, .94);
+      box-shadow: 0 0 0 3px rgba(255, 183, 80, .13);
+    }
+
+    #rsvpForm select option {
+      color: #fff4e5;
+      background: #260a12;
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 58px;
+      margin-top: 8px;
+      border: 1px solid #ffd184;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #8d4b20, #4b1b20);
+      color: #fff0d2;
+      font: 600 1.05rem "DM Sans", sans-serif;
+      box-shadow:
+        0 0 0 2px rgba(255, 193, 98, .18),
+        0 8px 22px rgba(0, 0, 0, .3),
+        inset 0 1px 0 rgba(255, 238, 195, .45);
+      cursor: pointer;
+      transition: transform .2s, filter .2s;
+    }
+
+    .submit-button:hover {
+      filter: brightness(1.15);
+      transform: translateY(-2px);
+    }
+
+    .submit-button:active {
+      transform: translateY(0);
+    }
+
+    .submit-button span {
+      margin-left: 8px;
+      color: #ffe2a4;
+    }
+
+    .form-status {
+      color: #f8dfb5;
+      text-align: center;
+      min-height: 1.2em;
+    }
+
+    .closing {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(230, 184, 120, .35);
+      text-align: center;
+      color: #e9cba8;
+    }
+
+    .closing > span {
+      color: #e8b96d;
+      font-size: 1.3rem;
+    }
+
+    .closing p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .closing strong {
+      color: #ffdfaa;
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .gate-open {
+        bottom: 7%;
+        min-width: 175px;
+        padding: 15px 30px;
+        font-size: 1rem;
+      }
+
+      .scene-rsvp {
+        padding: 22px 12px;
+      }
+
+      .rsvp-card {
+        padding: 24px 18px;
+      }
+
+      #rsvpForm {
+        gap: 15px;
+      }
+
+      #rsvpForm input,
+      #rsvpForm select {
+        min-height: 50px;
+        font-size: .95rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scene-cover.opening .scene-image,
+      .scene-cover.opening .gate-open {
+        animation: none;
+      }
+    }
+
+    /* Yakuniy RSVP sozlamalari: karta fonsiz, orqa rasm va undagi yozuvlar ko‘rinsin */
+    .scene.scene-rsvp {
+      background: transparent !important;
+    }
+
+    .scene.scene-rsvp::before {
+      background: transparent !important;
+    }
+
+    .scene.scene-rsvp .rsvp-card {
+      background: transparent !important;
+      background-color: transparent !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .scene.scene-rsvp .rsvp-card::before,
+    .scene.scene-rsvp .rsvp-card::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    .scene.scene-rsvp #rsvpForm input,
+    .scene.scene-rsvp #rsvpForm select {
+      background: rgba(38, 10, 18, .72) !important;
+      color: #fff4e5 !important;
+    }
+
+    .scene.scene-rsvp #rsvpForm input:focus,
+    .scene.scene-rsvp #rsvpForm select:focus {
+      background: rgba(38, 10, 18, .88) !important;
+    }
+
+    .scene.scene-rsvp #rsvpForm select option {
+      color: #fff4e5 !important;
+      background: #260a12 !important;
+    }
+
+
+    /* RSVP joylashuvi: telefon va desktopda rasm matni forma bilan to‘qnashmasin */
+    .scene.scene-rsvp {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      height: auto;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 190px 24px 90px;
+      box-sizing: border-box;
+    }
+
+    .scene.scene-rsvp > .scene-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: -2;
+    }
+
+    .scene.scene-rsvp .rsvp-card {
+      width: min(100%, 680px);
+      margin: 0 auto;
+      padding: 0;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    @media (min-width: 601px) {
+      .scene.scene-rsvp {
+        padding: 210px 24px 100px;
+      }
+      .scene.scene-rsvp > .scene-image {
+        object-position: center top;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .scene.scene-rsvp {
+        min-height: 100svh;
+        padding: 230px 18px 95px;
+      }
+      .scene.scene-rsvp > .scene-image {
+        object-position: center top;
+      }
+      .scene.scene-rsvp .rsvp-card {
+        width: 100%;
+        max-width: 460px;
+      }
+      .scene.scene-rsvp #rsvpForm {
+        gap: 14px;
+      }
+      .scene.scene-rsvp #rsvpForm input,
+      .scene.scene-rsvp #rsvpForm select {
+        min-height: 48px;
+        font-size: 15px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="invitation">
+
+    <!-- 1-sahna: darvoza -->
+    <section class="scene scene-cover" id="cover">
+      <img
+        class="scene-image"
+        src="Image/darvoza.png"
+        alt="To‘y darvozasi"
+      >
+
+      <button class="gate-open" id="openInvitation" type="button">
+        Taklifnomani ochish
+      </button>
+    </section>
+
+    <!-- 2-sahna: parda va kelin-kuyov -->
+    <section class="scene scene-curtain" id="scene-two">
+      <img
+        class="scene-image"
+        src="Image/parda.png"
+        alt="Ochilayotgan pardalar oldidagi kelin-kuyov"
+      >
+
+      <div class="scene-copy curtain-copy">
+        <p class="eyebrow">Bir umrga birga</p>
+        <div class="initials">X <span>&amp;</span> D</div>
+        <p class="curtain-note">
+          Hayotimizning eng go‘zal kuniga xush kelibsiz
+        </p>
+        <a class="round-link" href="#scene-three" aria-label="Keyingi sahifa">↓</a>
+      </div>
+    </section>
+
+    <!-- 3-sahna: sana va manzil -->
+    <section class="scene scene-details" id="scene-three">
+      <img
+        class="scene-image"
+        src="Image/saroy.png"
+        alt="Asir to‘yxonasi va bezatilgan hovli"
+      >
+
+      <div class="details-card">
+        <p class="eyebrow">
+          Sizni oilamizning eng muhim kuniga taklif qilamiz
+        </p>
+
+        <h2>Xasanjon <span>&amp;</span> Dilnoza</h2>
+
+        <p class="intro">
+          Hayotimizning yangi sahifasini siz azizlarimiz bilan birga
+          boshlashdan mamnunmiz.
+        </p>
+
+        <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
+          <div><strong id="days">—</strong><span>kun</span></div>
+          <div><strong id="hours">—</strong><span>soat</span></div>
+          <div><strong id="minutes">—</strong><span>daqiqa</span></div>
+          <div><strong id="seconds">—</strong><span>soniya</span></div>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-icon">▣</span>
+          <div>
+            <small>Sana</small>
+            <strong>18-dekabr, 2026-yil</strong>
+          </div>
+
+          <span class="detail-icon">◷</span>
+          <div>
+            <small>Vaqt</small>
+            <strong>Soat 18:00</strong>
+          </div>
+        </div>
+
+        <div class="venue">
+          <p class="eyebrow">Manzil</p>
+          <h3>Asir to‘yxonasi</h3>
+          <p>Toshkent shahri, manzil keyin aniqlashtiriladi</p>
+          <a
+            class="gold-button small-button"
+            id="mapLink"
+            href="https://yandex.com/maps/"
+            target="_blank"
+            rel="noopener"
+          >
+            Xaritada ko‘rish ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-sahna: RSVP -->
+    <section class="scene scene-rsvp" id="scene-four">
+      <img
+        class="scene-image"
+        src="Image/rsvp.png"
+        alt="To‘yga kelishni tasdiqlash sahnasi"
+      >
+
+      <div class="rsvp-card">
+        <div class="envelope" aria-hidden="true"></div>
+        <form id="rsvpForm">
+          <label>
+            <span>Ism va familiyangiz</span>
+            <input
+              name="guest_name"
+              type="text"
+              placeholder="Masalan, Dilnoza Karimova"
+              maxlength="120"
+              required
+            >
+          </label>
+
+          <label>
+            <span>Ishtirok etasizmi?</span>
+            <select name="attendance" required>
+              <option value="" selected disabled>Tanlang</option>
+              <option value="yes">Ha, albatta kelaman</option>
+              <option value="no">Afsuski, bora olmayman</option>
+            </select>
+          </label>
+
+          <label>
+            <span>O‘zingiz bilan nechta kishi kelasiz?</span>
+            <select name="guest_count" required>
+              <option value="1" selected>1 kishi</option>
+              <option value="2">2 kishi</option>
+              <option value="3">3 kishi</option>
+              <option value="4">4 kishi</option>
+              <option value="5">5 kishi</option>
+            </select>
+          </label>
+
+          <button class="gold-button submit-button" type="submit">
+            Javobni yuborish <span>✓</span>
+          </button>
+
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+
+        <div class="closing">
+          <span>✿</span>
+          <p>Mehr bilan,<br><strong>Xasanjon &amp; Dilnoza</strong></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+
+  <script>
+    const openButton = document.getElementById("openInvitation");
+    const cover = document.getElementById("cover");
+
+    openButton.addEventListener("click", () => {
+      cover.classList.add("opening");
+      openButton.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById("scene-two").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 900);
+    });
+  </script>
+</body>
+</html>
