@@ -640,6 +640,50 @@
     const cover = document.getElementById("cover");
     const music = document.getElementById("weddingMusic");
 
+    // Google Apps Script Web App manzili
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK-nhgXY633wPHvSnqe4qd52E85MTFyy6ZdnU5P2kme9gRQ_CmFqTGmuYsjbtZPdjrYA/exec";
+
+    // RSVP javoblarini Google Sheets'ga yuborish
+    const rsvpForm = document.getElementById("rsvpForm");
+    const formStatus = document.getElementById("formStatus");
+
+    rsvpForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      const submitButton = rsvpForm.querySelector('button[type="submit"]');
+      const formData = new FormData(rsvpForm);
+      const payload = {
+        ism: formData.get("guest_name") || "",
+        sana: "21-Noyabr, 2026-yil",
+        vaqt: "18:00",
+        manzil: "Asr to‘yxonasi, Toshkent, Beruniy ko‘chasi, 6/2",
+        musiqa: "",
+        holat: formData.get("attendance") === "yes" ? "Keladi" : "Kela olmaydi",
+        havola: window.location.href,
+        guest_count: formData.get("guest_count") || "1"
+      };
+
+      submitButton.disabled = true;
+      formStatus.textContent = "Javob yuborilmoqda…";
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        formStatus.textContent = "Javobingiz yuborildi. Rahmat!";
+        rsvpForm.reset();
+      } catch (error) {
+        console.error("RSVP yuborilmadi:", error);
+        formStatus.textContent = "Yuborishda xatolik. Iltimos, qayta urinib ko‘ring.";
+      } finally {
+        submitButton.disabled = false;
+      }
+    }, true);
+
     openButton.addEventListener("click", () => {
       music.play().catch(error => console.log("Musiqa ishga tushmadi:", error));
       cover.classList.add("opening");
