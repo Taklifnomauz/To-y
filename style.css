@@ -696,7 +696,7 @@ p {
   background: #260a12;
 }
 
-/* Kompyuter: dekorativ rasm nisbatini saqlab, formani markazda tutish */
+/* Kompyuter: RSVP formasi 6 sm pastga */
 @media (min-width: 601px) {
   .scene.scene-rsvp {
     min-height: 100vh;
@@ -709,10 +709,11 @@ p {
 
   .scene.scene-rsvp .rsvp-card {
     max-width: 560px;
+    transform: translateY(6cm);
   }
 }
 
-/* Telefon: fon rasmini yuqori qismga moslab, formani ixcham joylashtirish */
+/* Telefon: RSVP formasi 2 sm pastga */
 @media (max-width: 600px) {
   .scene.scene-rsvp {
     min-height: 100svh;
@@ -728,6 +729,7 @@ p {
     width: 100%;
     max-width: 460px;
     padding: 12px 10px;
+    transform: translateY(2cm);
   }
 
   .scene.scene-rsvp .rsvp-card h1,
