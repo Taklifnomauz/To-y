@@ -136,3 +136,13 @@ h1,h2,h3,p{margin-top:0}
   .scene.scene-rsvp .rsvp-card h1,.scene.scene-rsvp .rsvp-card h2{line-height:1.08;overflow-wrap:anywhere}
   .scene.scene-rsvp .rsvp-intro{max-width:340px}
 }
+#scene-three,
+#scene-three .details-card,
+#scene-three .details-card * {
+  background-color: transparent !important;
+}
+
+#scene-three .countdown div,
+#scene-three .detail-row {
+  background: rgba(45, 10, 22, 0.78) !important;
+}
