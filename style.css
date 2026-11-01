@@ -643,3 +643,100 @@ p {
     animation: none;
   }
 }
+
+/* RSVP sahnasi: telefon va kompyuterda fon bilan matn ustma-ust tushmasin */
+.scene.scene-rsvp {
+  position: relative;
+  min-height: 100svh;
+  height: auto;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 5vh, 56px) clamp(14px, 3vw, 32px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Bezakli rasm butun sahnani qoplaydi; rasmning o‘zidagi yozuvlar saqlanadi */
+.scene.scene-rsvp > .scene-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: -2;
+}
+
+.scene.scene-rsvp::before {
+  background: rgba(35, 5, 14, 0.08);
+}
+
+.scene.scene-rsvp .rsvp-card {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: clamp(18px, 3.5vw, 38px);
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Inputlar aniq o‘qilsin, lekin katta oq panel hosil qilmasin */
+.scene.scene-rsvp #rsvpForm input,
+.scene.scene-rsvp #rsvpForm select {
+  background: rgba(38, 10, 18, 0.78);
+  color: #fff0df;
+  border-color: rgba(235, 195, 143, 0.9);
+}
+
+.scene.scene-rsvp #rsvpForm select option {
+  color: #fff0df;
+  background: #260a12;
+}
+
+/* Kompyuter: dekorativ rasm nisbatini saqlab, formani markazda tutish */
+@media (min-width: 601px) {
+  .scene.scene-rsvp {
+    min-height: 100vh;
+    padding: 34px 24px;
+  }
+
+  .scene.scene-rsvp > .scene-image {
+    object-position: center center;
+  }
+
+  .scene.scene-rsvp .rsvp-card {
+    max-width: 560px;
+  }
+}
+
+/* Telefon: fon rasmini yuqori qismga moslab, formani ixcham joylashtirish */
+@media (max-width: 600px) {
+  .scene.scene-rsvp {
+    min-height: 100svh;
+    padding: 18px 12px 24px;
+    place-items: center;
+  }
+
+  .scene.scene-rsvp > .scene-image {
+    object-position: center center;
+  }
+
+  .scene.scene-rsvp .rsvp-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 12px 10px;
+  }
+
+  .scene.scene-rsvp .rsvp-card h1,
+  .scene.scene-rsvp .rsvp-card h2 {
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .scene.scene-rsvp .rsvp-intro {
+    max-width: 340px;
+  }
+}
