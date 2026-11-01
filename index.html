@@ -47,29 +47,101 @@
       position: relative;
       z-index: 1;
     }
+
+    /* Birinchi sahnadagi bosh harflar va ochish belgisi */
+    .gate-initials {
+      position: absolute;
+      z-index: 2;
+      top: 24%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #f7e4bd;
+      font: italic clamp(3rem, 9vw, 6rem)/1 "Cormorant Garamond", serif;
+      text-shadow: 0 2px 18px #16040a;
+      white-space: nowrap;
+    }
+
+    .gate-initials span {
+      color: #d8b77a;
+    }
+
+    .gate-open {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: 8%;
+      transform: translateX(-50%);
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid #d8b77a;
+      border-radius: 50%;
+      background: #260a12cc;
+      color: #f7e4bd;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .gate-open:hover {
+      background: #6d2638;
+      transform: translateX(-50%) scale(1.08);
+    }
+
+    .gate-open:disabled {
+      cursor: wait;
+    }
+
+    .scene-cover.opening .scene-image {
+      animation: gate-approach 1.5s ease-in forwards;
+    }
+
+    .scene-cover.opening .gate-initials,
+    .scene-cover.opening .gate-open {
+      animation: fade-away .8s ease-in forwards;
+    }
+
+    @keyframes gate-approach {
+      from { transform: scale(1); }
+      to { transform: scale(1.7); }
+    }
+
+    @keyframes fade-away {
+      to { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scene-cover.opening .scene-image,
+      .scene-cover.opening .gate-initials,
+      .scene-cover.opening .gate-open {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
 <body>
   <main class="invitation">
 
-    <!-- 1-sahna: darvoza -->
+    <!-- 1-sahna: darvoza va bosh harflar -->
     <section class="scene scene-cover" id="cover">
       <img
         class="scene-image"
         src="Image/darvoza.png"
-        alt="To‘y darvozasi va gullar bilan bezatilgan yo‘lak"
+        alt="To‘y darvozasi"
       >
 
-      <div class="scene-copy cover-copy">
-        <p class="eyebrow">Elektron taklifnoma</p>
-        <h1>Aziza <span>&amp;</span> Mirjalol</h1>
-        <p class="cover-date">18 · 12 · 2026</p>
-        <a class="gold-button" href="#scene-two">
-          Taklifnomani ochish <span>↗</span>
-        </a>
-        <p class="scroll-hint">Pastga suring ↓</p>
-      </div>
+      <div class="gate-initials">A <span>&amp;</span> M</div>
+
+      <button
+        class="gate-open"
+        id="openInvitation"
+        type="button"
+        aria-label="Taklifnomani ochish"
+      >
+        ↓
+      </button>
     </section>
 
     <!-- 2-sahna: parda va kelin-kuyov -->
@@ -211,10 +283,26 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
+
+  <script>
+    const openButton = document.getElementById("openInvitation");
+    const cover = document.getElementById("cover");
+
+    openButton.addEventListener("click", () => {
+      cover.classList.add("opening");
+      openButton.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById("scene-two").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 900);
+    });
+  </script>
 </body>
 </html>
