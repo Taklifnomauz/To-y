@@ -206,7 +206,7 @@ h1,h2,h3,p{margin-top:0}
   margin-top: 14px;
 }/* Taklifnoma ichidagi barcha elementlarni pastroqqa tushirish */
 #scene-three .details-card {
-  transform: translateY(1.25cm);
+  transform: translateY(2.25cm);
 }
 
 /* Kelin-kuyov ismlaridan keyingi oila yozuvi */
