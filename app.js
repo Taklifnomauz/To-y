@@ -1,7 +1,6 @@
 // Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzK-nhgXY633wPHvSnqe4qd52E85MTFyy6ZdnU5P2kme9gRQ_CmFqTGmuYsjbtZPdjrYA/exec";
-
+  "https://script.google.com/macros/s/AKfycbwT5YHZIOL_K_6MqXA1CzSRkexS9Tvt5aWYQFeZ2ZMcejVMWfVN3W2S_pHUH771h6hP/exec";
 // To'y sanasi: 21-noyabr 2026, soat 18:00.
 const weddingDate = new Date(2026, 10, 21, 18, 0, 0);
 
