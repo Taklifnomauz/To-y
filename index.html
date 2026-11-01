@@ -4,23 +4,41 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260a12">
+  <meta
+    name="description"
+    content="Aziza va Mirjalolning to‘y taklifnomasi. Marosim sanasi, manzili va tashrifni tasdiqlash."
+  >
+
   <title>Silk Romance — Taklifnoma</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main>
+    <!-- Taklifnomani ochish sahifasi -->
     <section class="cover" id="cover" aria-label="Taklifnomani ochish">
-      <div class="cover-glow"></div>
-      <audio id="weddingMusic" preload="auto" loop src="music.mp3"></audio>
+      <div class="cover-glow" aria-hidden="true"></div>
 
-      <div class="gate" id="gate">
+      <audio
+        id="weddingMusic"
+        preload="auto"
+        loop
+        src="music.mp3"
+      ></audio>
+
+      <div class="gate" id="gate" aria-hidden="true">
         <div class="gate-leaf gate-left">
           <div class="gate-frame">
             <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">A</div>
+            <div class="monogram">✦</div>
             <div class="gate-rule"></div>
             <div class="gate-ornament bottom-ornament">❦</div>
           </div>
@@ -29,7 +47,7 @@
         <div class="gate-leaf gate-right">
           <div class="gate-frame">
             <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">M</div>
+            <div class="monogram">✦</div>
             <div class="gate-rule"></div>
             <div class="gate-ornament bottom-ornament">❦</div>
           </div>
@@ -38,25 +56,38 @@
 
       <div class="cover-copy" id="coverCopy">
         <p class="eyebrow">Sizni to‘yimizga taklif qilamiz</p>
-        <h1>Aziza <span>&</span> Mirjalol</h1>
+
+        <h1>Aziza <span>&amp;</span> Mirjalol</h1>
+
         <p class="cover-date">18 · 12 · 2026</p>
+
         <button class="open-button" id="openInvite" type="button">
-          Taklifnomani ochish <span aria-hidden="true">↗</span>
+          Taklifnomani ochish
+          <span aria-hidden="true">↗</span>
         </button>
       </div>
 
       <p class="cover-hint">Eshiklarni ochish uchun tugmani bosing</p>
     </section>
 
+    <!-- Asosiy taklifnoma -->
     <section class="invitation" id="invitation" aria-hidden="true">
       <div class="invitation-inner">
         <div class="ornament" aria-hidden="true">✦ ❦ ✦</div>
+
+        <div class="couple-initials" aria-label="M va A">
+          M <span>&amp;</span> A
+        </div>
+
         <p class="eyebrow">Bismillahir rohmanir rohiym</p>
-        <h2>Aziza <span>&</span> Mirjalol</h2>
+
+        <h2>Aziza <span>&amp;</span> Mirjalol</h2>
+
         <p class="intro">
           Hayotimizning eng go‘zal kunida sizni yonimizda ko‘rishdan mamnun bo‘lamiz.
         </p>
 
+        <!-- Sana va ortga sanash -->
         <section class="invite-part part-one" id="part-one">
           <div class="date-card">
             <span class="date-label">To‘y marosimi</span>
@@ -66,31 +97,62 @@
           </div>
 
           <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
-            <div><strong id="days">—</strong><span>kun</span></div>
-            <div><strong id="hours">—</strong><span>soat</span></div>
-            <div><strong id="minutes">—</strong><span>daqiqa</span></div>
-            <div><strong id="seconds">—</strong><span>soniya</span></div>
+            <div>
+              <strong id="days">—</strong>
+              <span>kun</span>
+            </div>
+
+            <div>
+              <strong id="hours">—</strong>
+              <span>soat</span>
+            </div>
+
+            <div>
+              <strong id="minutes">—</strong>
+              <span>daqiqa</span>
+            </div>
+
+            <div>
+              <strong id="seconds">—</strong>
+              <span>soniya</span>
+            </div>
           </div>
         </section>
 
+        <!-- Marosim manzili -->
         <section class="invite-part part-two" id="part-two">
           <div class="venue">
             <p class="eyebrow">Manzil</p>
             <h3>To‘y tantanasi</h3>
             <p>Restoran nomi va manzil keyin qo‘shiladi</p>
-            <a class="text-link" id="mapLink" href="#" target="_blank" rel="noopener">
+
+            <a
+              class="text-link"
+              id="mapLink"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
               Xaritada ko‘rish ↗
             </a>
           </div>
         </section>
 
+        <!-- Mehmon javobi -->
         <section class="invite-part part-three" id="part-three">
           <form class="rsvp" id="rsvpForm">
             <p class="eyebrow">Iltimos, tashrifingizni tasdiqlang</p>
 
             <label>
               Ismingiz
-              <input name="guest_name" type="text" placeholder="Ism-familiyangiz" required maxlength="120">
+              <input
+                name="guest_name"
+                type="text"
+                placeholder="Ism-familiyangiz"
+                required
+                maxlength="120"
+                autocomplete="name"
+              >
             </label>
 
             <label>
@@ -104,10 +166,20 @@
 
             <label>
               Mehmonlar soni
-              <input name="guest_count" type="number" min="1" max="20" value="1" required>
+              <input
+                name="guest_count"
+                type="number"
+                min="1"
+                max="20"
+                value="1"
+                required
+              >
             </label>
 
-            <button class="submit-button" type="submit">Javobni yuborish</button>
+            <button class="submit-button" type="submit">
+              Javobni yuborish
+            </button>
+
             <p class="form-status" id="formStatus" role="status"></p>
           </form>
 
