@@ -1,19 +1,8 @@
-// Supabase sozlamalari — o'z loyihangiz ma'lumotlarini kiriting.
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+// Google Apps Script Web App URL
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbzK-nhgXY633wPHvSnqe4qd52E85MTFyy6ZdnU5P2kme9gRQ_CmFqTGmuYsjbtZPdjrYA/exec";
 
-const supabaseReady =
-  SUPABASE_URL.startsWith("https://") &&
-  !SUPABASE_URL.includes("YOUR_") &&
-  SUPABASE_ANON_KEY.length > 20 &&
-  !SUPABASE_ANON_KEY.includes("YOUR_");
-
-const db =
-  supabaseReady && window.supabase
-    ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-    : null;
-
-// To'y sanasi: 18-dekabr 2026, soat 18:00.
+// To'y sanasi: 21-noyabr 2026, soat 18:00.
 const weddingDate = new Date(2026, 10, 21, 18, 0, 0);
 
 function updateCountdown() {
@@ -47,21 +36,15 @@ if (rsvpForm && formStatus) {
     const formData = new FormData(rsvpForm);
 
     const payload = {
-      guest_name: String(formData.get("guest_name") || "").trim(),
+      ism: String(formData.get("guest_name") || "").trim(),
       attendance: String(formData.get("attendance") || ""),
       guest_count: Number(formData.get("guest_count") || 1),
-      user_agent: navigator.userAgent,
-      submitted_at: new Date().toISOString()
+      submitted_at: new Date().toISOString(),
+      havola: window.location.href
     };
 
-    if (!payload.guest_name || !payload.attendance) {
+    if (!payload.ism || !payload.attendance) {
       formStatus.textContent = "Iltimos, barcha maydonlarni to‘ldiring.";
-      return;
-    }
-
-    if (!db) {
-      formStatus.textContent =
-        "RSVP bazasi sozlanmagan. Supabase URL va kalitini kiriting.";
       return;
     }
 
@@ -70,20 +53,21 @@ if (rsvpForm && formStatus) {
     formStatus.textContent = "Javobingiz yuborilmoqda...";
 
     try {
-      const { error } = await db.from("rsvps").insert([payload]);
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+      });
 
-      if (error) {
-        console.error(error);
-        formStatus.textContent =
-          "Yuborilmadi. Birozdan so‘ng qayta urinib ko‘ring.";
-        return;
-      }
-
-      formStatus.textContent = "Rahmat! Javobingiz qabul qilindi.";
+      formStatus.textContent = "Javobingiz yuborildi. Rahmat!";
       rsvpForm.reset();
     } catch (error) {
       console.error(error);
-      formStatus.textContent = "Ulanishda xatolik yuz berdi.";
+      formStatus.textContent =
+        "Yuborishda xatolik yuz berdi. Qayta urinib ko‘ring.";
     } finally {
       button.disabled = false;
       button.innerHTML = "Javobni yuborish <span>✓</span>";
