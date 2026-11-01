@@ -1,81 +1,110 @@
-*{box-sizing:border-box}
-:root{--wine:#260a12;--wine2:#4a1422;--gold:#d8b77a;--gold-light:#f3dfad;--cream:#f8f0e5;--ink:#321923}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--wine);color:var(--cream);font-family:"DM Sans",sans-serif}
-button,input,select{font:inherit}
-.cover{position:relative;isolation:isolate;display:grid;place-items:center;min-height:100svh;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#713143 0,#3b101d 48%,#17070c 100%)}
-.cover-glow{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(232,192,125,.14),transparent 55%);pointer-events:none}
-.curtain{display:none}
-.gate{position:absolute;z-index:3;inset:5vh 7vw 5vh;display:flex;perspective:1600px;filter:drop-shadow(0 20px 26px #100307)}
-.gate-leaf{width:50%;height:100%;padding:clamp(8px,1.6vw,24px);background:linear-gradient(135deg,#b99150,#4e2b20 15%,#a47a40 25%,#4b261d 45%,#c8a365 65%,#48231b 85%,#9b703b);border:1px solid #e5c98a;position:relative;transform-style:preserve-3d;transition:transform 3.6s cubic-bezier(.65,0,.25,1)}
-.gate-left{transform-origin:left center}
-.gate-right{transform-origin:right center}
-.gate-frame{height:100%;border:1px solid #e5c98a;outline:1px solid rgba(220,184,113,.35);outline-offset:-9px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:clamp(18px,4vh,52px) 12px;background:repeating-linear-gradient(90deg,rgba(25,8,12,.75) 0 2px,rgba(192,145,75,.24) 2px 4px,rgba(32,9,15,.72) 4px 12px),linear-gradient(135deg,#6d3c29,#1e0b10 45%,#8c6034);position:relative;overflow:hidden}
-.gate-frame:before,.gate-frame:after{content:"";position:absolute;inset:12px;border:1px solid rgba(238,203,133,.5);border-radius:48% 48% 3px 3px}
-.gate-frame:after{inset:24px;border-color:rgba(238,203,133,.22)}
-.gate-ornament{position:relative;z-index:1;color:var(--gold-light);text-shadow:0 0 12px #e2b45d;font-size:clamp(20px,3vw,42px)}
-.monogram{position:relative;z-index:1;font-family:"Cormorant Garamond",serif;font-size:clamp(72px,15vw,190px);line-height:1;color:#f3dba4;text-shadow:0 3px 0 #6b4324,0 0 24px rgba(247,207,124,.45);font-weight:500}
-.gate-rule{z-index:1;width:40%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent)}
-.cover-copy{position:absolute;z-index:5;bottom:11%;left:20px;right:20px;text-align:center;opacity:1;transition:opacity .5s}
-.eyebrow{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:#c8a66e}
-.cover h1,.invitation h2{font:500 clamp(2.6rem,7vw,5.4rem)/.98 "Cormorant Garamond",serif;margin:.35em 0;color:#f8e7c5}
-.cover h1 span,.invitation h2 span{color:var(--gold)}
-.cover-date{letter-spacing:.28em;color:#e2c58e;margin:18px 0}
-.open-button,.submit-button{border:1px solid var(--gold);background:rgba(30,7,14,.78);color:#f5dfae;padding:14px 24px;letter-spacing:.08em;cursor:pointer;transition:background .2s,transform .2s}
-.open-button:hover,.submit-button:hover{background:#6a2636;transform:translateY(-2px)}
-.open-button span{padding-left:12px}
-.cover-hint{position:absolute;z-index:5;bottom:3%;font-size:.65rem;letter-spacing:.16em;color:#c9ad80;text-transform:uppercase}
-.cover.opening .gate-left{transform:rotateY(-112deg)}
-.cover.opening .gate-right{transform:rotateY(112deg)}
+/* Darvoza va yozuvlarni chizgan namunangga mos joylashtirish */
+.gate {
+  inset: 3vh 6vw 4vh;
+  z-index: 3;
+}
 
-.cover.opening .cover-copy,.cover.opening .cover-hint{opacity:0;pointer-events:none}
-.cover.closed .gate{animation:gateGlow 3.5s ease-in-out infinite alternate}
-@keyframes gateGlow{from{filter:drop-shadow(0 18px 24px #100307)}to{filter:drop-shadow(0 18px 30px rgba(226,180,93,.25))}}
-.invitation{display:none;background:radial-gradient(ellipse at top,#fffaf1,#f3e4d2 65%,#e5cbb0);color:var(--ink);min-height:100vh;padding:clamp(30px,7vw,90px) 18px}
-.invitation.visible{display:block;animation:reveal .9s ease both}
-@keyframes reveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.invitation-inner{max-width:760px;margin:auto;text-align:center;border:1px solid #c6a36b;outline:1px solid rgba(198,163,107,.35);outline-offset:8px;padding:clamp(28px,6vw,70px) clamp(18px,5vw,58px);position:relative}
-.invitation-inner:before,.invitation-inner:after{content:"❦";position:absolute;color:#b58c52;font-size:30px;background:#f7eddf;padding:0 12px}
-.invitation-inner:before{top:-18px;left:calc(50% - 22px)}
-.invitation-inner:after{bottom:-18px;left:calc(50% - 22px)}
-.ornament{color:#b58c52;letter-spacing:.5em;margin-bottom:24px}
-.invitation h2{color:#542132;font-size:clamp(2.8rem,8vw,5.5rem);margin:.2em 0}
-.intro{max-width:520px;margin:20px auto 36px;line-height:1.8;color:#6c4c4b}
-.date-card{display:grid;justify-items:center;gap:5px;margin:32px auto;color:#542132}
-.date-label{letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;color:#987348}
-.date-card strong{font:500 6rem/.9 "Cormorant Garamond",serif}
-.month{letter-spacing:.16em;text-transform:uppercase}
-.time{margin-top:10px}
-.countdown{display:flex;justify-content:center;gap:clamp(12px,4vw,35px);margin:30px 0 55px}
-.countdown div{display:grid;gap:5px;min-width:48px}
-.countdown strong{font:500 2rem "Cormorant Garamond",serif;color:#7b3c45}
-.countdown span{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:#997c65}
-.venue{padding:28px 10px;border-top:1px solid #d4bd9c;border-bottom:1px solid #d4bd9c}
-.venue h3{font:500 2rem "Cormorant Garamond",serif;margin:8px}
-.venue p:not(.eyebrow){color:#765b52}
-.text-link{color:#8a4a46;text-decoration:none;border-bottom:1px solid #b58c52;padding-bottom:3px}
-.rsvp{max-width:430px;margin:45px auto 30px;text-align:left;display:grid;gap:16px}
-.rsvp>.eyebrow{text-align:center}
-.rsvp label{display:grid;gap:8px;font-size:.82rem;color:#775b50}
-.rsvp input,.rsvp select{width:100%;border:1px solid #d4bd9c;background:rgba(255,255,255,.55);padding:13px;color:#3c2026;border-radius:0}
-.submit-button{background:#542132;color:#f8e7c5}
-.form-status{text-align:center;font-size:.85rem;min-height:1em;color:#6c4c4b}
-footer{margin-top:30px;color:#9b7850;font:italic 1.3rem "Cormorant Garamond",serif}
-@media(max-width:600px){.gate{inset:5vh 3vw 7vh}.gate-frame{padding:22px 5px}.cover-copy{bottom:12%}.cover h1{font-size:2.65rem}.cover-hint{font-size:.55rem}.invitation-inner{padding:38px 18px}.countdown{gap:12px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.gate-leaf {
+  overflow: hidden;
+}
 
-/* Revised luxury gate + three mobile-friendly invitation chapters */
-.gate-leaf{box-shadow:inset 0 0 0 5px rgba(24,5,10,.65),inset 0 0 22px #d1a65b,0 0 12px #17050a}
-.gate-frame{background:repeating-linear-gradient(90deg,rgba(18,4,8,.86) 0 2px,rgba(191,143,67,.22) 2px 4px,rgba(32,9,15,.8) 4px 12px),linear-gradient(135deg,#70263a,#260a12 48%,#7a4a2d)}
-.gate-frame:before{border-width:2px;box-shadow:0 0 18px rgba(222,180,100,.18)}
-.gate .monogram{font-size:clamp(30px,7vw,82px);color:#d9b777}
-.cover-copy{bottom:10%;text-shadow:0 2px 12px #19040a}
-.invitation{background:radial-gradient(ellipse at 50% 0,#fff6e8 0,#f1dfca 55%,#d9b99a 100%)}
-.invitation-inner{background:linear-gradient(145deg,rgba(255,250,242,.95),rgba(246,230,211,.92));box-shadow:0 20px 60px rgba(83,30,38,.17),inset 0 0 0 1px rgba(180,133,73,.12)}
-.couple-initials{font:500 clamp(2.3rem,6vw,4rem) "Cormorant Garamond",serif;color:#6b2334;margin:-8px 0 22px;text-shadow:0 2px 0 #fff,0 5px 12px rgba(90,25,38,.16)}
-.couple-initials span{color:#b58c52;font-style:italic}
-.invite-part{padding:clamp(24px,5vw,48px) 0;scroll-margin-top:20px}
-.part-two,.part-three{border-top:1px solid #d4bd9c}
-.open-button,.submit-button{box-shadow:0 5px 0 #3b101d,0 9px 18px rgba(20,3,8,.3);border-radius:2px}
-.open-button:active,.submit-button:active{transform:translateY(4px);box-shadow:0 1px 0 #3b101d}
-@media(max-width:600px){.invitation-inner{padding:26px 16px}.invite-part{padding:34px 0}.gate{inset:3vh 2vw 6vh}.gate-leaf{padding:5px}.gate-frame:before{inset:8px}.gate-frame:after{inset:16px}}
+.gate-frame {
+  justify-content: center;
+  gap: 0;
+}
+
+.gate-frame .top-ornament,
+.gate-frame .bottom-ornament,
+.gate-frame .gate-rule {
+  display: none;
+}
+
+/* Harflar darvoza qanotlarining o'rtasida */
+.gate .monogram {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: clamp(58px, 10vw, 130px);
+  color: #f4d69a;
+  text-shadow:
+    0 2px 0 #754c25,
+    0 0 18px rgba(244, 214, 154, .35);
+}
+
+/* Ismlar, sana va tugma darvozaning pastki qismida */
+.cover-copy {
+  z-index: 6;
+  bottom: 8%;
+  left: 12px;
+  right: 12px;
+  text-align: center;
+}
+
+.cover-copy .eyebrow {
+  margin-bottom: 10px;
+  font-size: .58rem;
+  letter-spacing: .2em;
+}
+
+.cover h1 {
+  margin: 8px 0;
+  font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+}
+
+.cover-date {
+  margin: 12px 0;
+  font-size: .72rem;
+  letter-spacing: .25em;
+}
+
+.open-button {
+  padding: 12px 20px;
+  font-size: .75rem;
+  background: linear-gradient(145deg, #6b2638, #35101b);
+  border: 1px solid #e2c17e;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 5px 0 #210811,
+    0 9px 18px rgba(0,0,0,.35);
+}
+
+.cover-hint {
+  z-index: 6;
+  bottom: 2%;
+  font-size: .55rem;
+}
+
+@media (max-width: 600px) {
+  .gate {
+    inset: 2vh 2vw 4vh;
+  }
+
+  .gate-leaf {
+    padding: 5px;
+  }
+
+  .gate-frame:before {
+    inset: 8px;
+  }
+
+  .gate-frame:after {
+    inset: 16px;
+  }
+
+  .cover-copy {
+    bottom: 8%;
+  }
+
+  .cover h1 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .cover-copy .eyebrow {
+    font-size: .5rem;
+  }
+
+  .open-button {
+    padding: 11px 16px;
+  }
+}
