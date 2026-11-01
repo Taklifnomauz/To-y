@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f0e9">
+  <title>Silk Romance — Taklifnoma</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main>
+    <section class="cover" id="cover">
+      <div class="cover-orbit orbit-one"></div><div class="cover-orbit orbit-two"></div>
+      <div class="cover-content">
+        <p class="eyebrow">SIZNI QUvonchimizga SHERIK BO‘LISHGA TAKLIF QILAMIZ</p>
+        <div class="monogram">A <span>✦</span> M</div>
+        <h1>Aziza <i>&</i> Mirjalol</h1>
+        <p class="cover-date">2026 · 18 DEKABR · 18:00</p>
+        <button class="open-invite" id="openInvite" type="button">
+          <span class="seal">✦</span><span>Taklifnomani ochish</span><span class="arrow">↗</span>
+        </button>
+        <p class="tiny-note">Musiqa ochilgandan keyin boshlanadi</p>
+      </div>
+      <div class="cover-flower flower-left">❋</div><div class="cover-flower flower-right">❋</div>
+    </section>
+
+    <section class="invitation hidden" id="invitation">
+      <header class="topbar"><span>AZIZA & MIRJALOL</span><button id="musicToggle" class="music-toggle" type="button" aria-label="Musiqani yoqish">♫ <span>Musiqa</span></button></header>
+      <section class="hero">
+        <div class="hero-kicker">BIR-BIRIMIZNI TOPDIK, ENDI SIZNI KUTAMIZ</div>
+        <h2>Bir umrga<br><em>birga</em></h2>
+        <p class="hero-copy">Hayotimizdagi eng go‘zal kunni siz bilan birga nishonlash biz uchun katta baxt.</p>
+        <div class="hero-stamp">18<br><small>DEK</small></div>
+      </section>
+
+      <section class="countdown-section">
+        <p class="eyebrow">KATTA KUNGA QOLGAN VAQT</p>
+        <div class="countdown" id="countdown">
+          <div><strong id="days">—</strong><span>kun</span></div><b>:</b>
+          <div><strong id="hours">—</strong><span>soat</span></div><b>:</b>
+          <div><strong id="minutes">—</strong><span>daqiqa</span></div><b>:</b>
+          <div><strong id="seconds">—</strong><span>soniya</span></div>
+        </div>
+      </section>
+
+      <section class="details">
+        <div class="section-heading"><span>01 / TANTANAMIZ</span><h3>Ushbu kunni<br><em>birga</em> o‘tkazamiz</h3></div>
+        <div class="detail-row"><span class="detail-icon">✧</span><div><small>SANA</small><strong>18-dekabr, 2026-yil</strong></div></div>
+        <div class="detail-row"><span class="detail-icon">◷</span><div><small>VAQT</small><strong>Soat 18:00</strong></div></div>
+        <div class="detail-row"><span class="detail-icon">⌖</span><div><small>MANZIL</small><strong>Marvarid to‘yxonasi</strong><p>Toshkent shahri, manzilni shu yerda yangilang</p></div></div>
+        <a class="map-button" id="mapLink" href="https://yandex.com/maps/" target="_blank" rel="noopener">Yandex Maps’da yo‘lni ko‘rish <span>↗</span></a>
+      </section>
+
+      <section class="rsvp">
+        <div class="section-heading"><span>02 / JAVOBINGIZ</span><h3>Sizni kutamiz</h3><p>Ism-familiyangizni va nechta kishi kelishingizni yozib qoldiring.</p></div>
+        <form id="rsvpForm">
+          <label>Ism va familiya<input name="name" autocomplete="name" placeholder="Masalan, Dilnoza Karimova" required maxlength="100"></label>
+          <label>Javobingiz<select name="attendance" required><option value="">Tanlang</option><option value="yes">Albatta, boraman</option><option value="no">Afsuski, bora olmayman</option><option value="maybe">Hali aniq emas</option></select></label>
+          <label>Necha kishi kelasiz?<select name="guests" required><option value="1">1 kishi</option><option value="2">2 kishi</option><option value="3">3 kishi</option><option value="4">4 kishi</option><option value="5">5 kishi</option><option value="6">6 kishi</option></select></label>
+          <button class="submit-button" type="submit">Javobni yuborish <span>↗</span></button>
+          <p class="form-message" id="formMessage" role="status"></p>
+          <p class="privacy-note">Ma’lumotlaringiz faqat taklifnoma egasiga mehmonlarni rejalashtirish uchun ko‘rinadi.</p>
+        </form>
+      </section>
+      <footer><div class="footer-flower">✳</div><p>Mehr bilan, Aziza va Mirjalol</p><small>BU KUN XOTIRALARDA QOLSIN</small></footer>
+    </section>
+  </main>
+  <audio id="weddingMusic" preload="none" loop src="assets/music.mp3"></audio>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
