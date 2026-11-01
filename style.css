@@ -276,30 +276,81 @@ p {
   text-decoration: none;
 }
 
-/* 3 — sana va manzil */
+/* 3 — sana va manzil: shaffof 3D karta */
 .scene-details {
   display: grid;
   place-items: center;
   padding: 36px 18px;
+  perspective: 1400px;
   background:
-    linear-gradient(rgba(38, 10, 18, 0.16), rgba(38, 10, 18, 0.22)),
+    linear-gradient(rgba(38, 10, 18, 0.12), rgba(38, 10, 18, 0.2)),
     url("Image/saroy.png") center center / cover no-repeat;
-  color: var(--ink);
+  color: #fff4e8;
+}
+
+.scene-details > .scene-image {
+  object-position: center;
 }
 
 .details-card {
   width: min(100%, 620px);
   padding: clamp(24px, 5vw, 50px);
-  border: 1px solid #c6a36b;
-  background: #fff7eeeb;
+  position: relative;
+  isolation: isolate;
+  transform: perspective(1400px) rotateX(2deg) rotateY(-1deg) translateZ(0);
+  transform-style: preserve-3d;
+  border: 1px solid rgba(255, 224, 170, 0.55);
+  border-radius: 22px;
+
+  /* Oq fon olib tashlandi — orqa rasm ko‘rinadi */
+  background: rgba(35, 8, 17, 0.12);
+
+  color: #fff4e8;
   text-align: center;
-  box-shadow: 0 20px 55px #58232b20;
+  box-shadow:
+    0 28px 60px rgba(12, 2, 7, 0.42),
+    0 10px 24px rgba(12, 2, 7, 0.25),
+    inset 0 1px 0 rgba(255, 245, 220, 0.5),
+    inset 0 -1px 0 rgba(255, 215, 155, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.details-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  z-index: -1;
+  border: 1px solid rgba(255, 231, 190, 0.22);
+  border-radius: 15px;
+  pointer-events: none;
+  transform: translateZ(18px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .details-card:hover {
+    transform: perspective(1400px) rotateX(0deg) rotateY(0deg) translateY(-5px);
+    box-shadow:
+      0 35px 75px rgba(12, 2, 7, 0.5),
+      0 14px 28px rgba(12, 2, 7, 0.3),
+      inset 0 1px 0 rgba(255, 245, 220, 0.55),
+      inset 0 -1px 0 rgba(255, 215, 155, 0.24);
+  }
+}
+
+.details-card .eyebrow {
+  color: #ffe0a6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .details-card h2 {
   margin: 15px 0;
-  color: #562332;
+  color: #fff0d2;
   font: 500 clamp(2.5rem, 8vw, 4.5rem)/1 "Cormorant Garamond", serif;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
 }
 
 .details-card h2 span {
@@ -309,9 +360,10 @@ p {
 .intro {
   max-width: 450px;
   margin: 0 auto 28px;
-  color: #80605a;
+  color: #fff0df;
   font-size: 0.9rem;
   line-height: 1.7;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .countdown {
@@ -324,10 +376,14 @@ p {
 .countdown div {
   min-width: 62px;
   padding: 10px 5px;
+  border: 1px solid rgba(255, 220, 160, 0.5);
   border-radius: 8px;
-  background: #5a2030;
+  background: rgba(45, 10, 22, 0.78);
   color: #f6dfb3;
-  box-shadow: 0 4px 10px #4c1a2922;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 240, 210, 0.15);
+  transform: translateZ(24px);
 }
 
 .countdown strong {
@@ -349,9 +405,10 @@ p {
   flex-wrap: wrap;
   margin: 20px 0;
   padding: 16px 8px;
-  border: 1px solid #e1cbb9;
+  border: 1px solid rgba(255, 224, 180, 0.35);
   border-radius: 12px;
-  background: #fff9f3;
+  background: rgba(45, 10, 22, 0.62);
+  color: #fff0d8;
 }
 
 .detail-row div {
@@ -365,7 +422,7 @@ p {
 
 .detail-row small {
   margin-bottom: 4px;
-  color: #9a7668;
+  color: #e8c99e;
   font-size: 0.65rem;
 }
 
@@ -374,24 +431,26 @@ p {
 }
 
 .detail-icon {
-  color: #9a674f;
+  color: #f0c77f;
 }
 
 .venue {
   margin-top: 25px;
   padding-top: 20px;
-  border-top: 1px solid #e1cbb9;
+  border-top: 1px solid rgba(255, 224, 180, 0.35);
 }
 
 .venue h3 {
   margin: 8px 0;
-  color: #562332;
+  color: #fff0d2;
   font: 500 1.8rem "Cormorant Garamond", serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
 .venue p:not(.eyebrow) {
-  color: #80605a;
+  color: #fff0df;
   font-size: 0.8rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
 .small-button {
@@ -522,6 +581,7 @@ p {
     0 0 0 2px rgba(255, 193, 98, 0.15),
     0 8px 22px rgba(0, 0, 0, 0.25),
     inset 0 1px 0 rgba(255, 238, 195, 0.4);
+  cursor: pointer;
 }
 
 .submit-button:hover {
@@ -573,6 +633,7 @@ p {
 
   .details-card {
     padding: 25px 18px;
+    transform: perspective(1000px) rotateX(1deg);
   }
 
   .rsvp-card {
@@ -646,7 +707,7 @@ p {
   }
 }
 
-/* RSVP sahnasi: rasm fon bilan matn ustma-ust tushmasin */
+/* RSVP: fon rasmi va yozuvlar ustma-ust joylashadi */
 .scene.scene-rsvp {
   position: relative;
   min-height: 100svh;
@@ -684,7 +745,7 @@ p {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Inputlar aniq ko‘rinsin */
+/* RSVP inputlari aniq ko‘rinsin */
 .scene.scene-rsvp #rsvpForm input,
 .scene.scene-rsvp #rsvpForm select {
   background: rgba(38, 10, 18, 0.78);
