@@ -482,9 +482,24 @@
       }
     }
   </style>
+
+<style>
+.language-switcher{position:fixed;right:14px;top:14px;z-index:9999;display:flex;gap:5px;padding:6px;border:1px solid #d8b77a;border-radius:24px;background:rgba(38,10,18,.92);box-shadow:0 4px 16px #16040a55}
+.language-switcher button{border:0;border-radius:18px;padding:8px 10px;background:transparent;color:#f7e4bd;font:600 12px "DM Sans",sans-serif;cursor:pointer}
+.language-switcher button[aria-pressed="true"]{background:#d8b77a;color:#260a12}
+@media(max-width:600px){.language-switcher{top:10px;right:10px}.language-switcher button{padding:7px 8px}}
+</style>
+
 </head>
 
 <body>
+
+<div class="language-switcher" role="group" aria-label="Language">
+  <button type="button" data-lang="uz" aria-pressed="true">UZ</button>
+  <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+  <button type="button" data-lang="en" aria-pressed="false">EN</button>
+</div>
+
   <main class="invitation">
 
     <!-- 1-sahna: darvoza -->
@@ -672,5 +687,89 @@
       }, 1850);
     });
   </script>
+
+<script>
+(() => {
+  const translations = {
+    uz: {
+      open: "Taklifnomani ochish", welcome: "Aziz mehmonimiz!",
+      invite1: "Hayotimizning eng go‘zal kunida sizni yonimizda ko‘rish biz uchun katta baxt. Ikki qalb bir yo‘lni tanlab, yangi hayot sari qadam qo‘yayotgan ushbu unutilmas kunda quvonchimizga sherik bo‘lishingizni istaymiz.",
+      invite2: "Tashrifingiz va samimiy tilaklaringiz biz uchun eng qadrli sovg‘adir.",
+      invite3: "Sizni to‘yimizga chin qalbimizdan taklif etamiz!",
+      map: "Xaritada ko‘rish ↗", nameLabel: "Ism va familiyangiz",
+      namePlaceholder: "Masalan, Aziza Karimova", attendanceLabel: "Ishtirok etasizmi?",
+      choose: "Tanlang", yes: "Ha, albatta kelaman", no: "Afsuski, bora olmayman",
+      countLabel: "O‘zingiz bilan nechta kishi kelasiz?", person: "kishi",
+      submit: "Javobni yuborish", thanks: "Javobingiz yuborildi. Rahmat!",
+      sending: "Javob yuborilmoqda…", error: "Yuborishda xatolik. Iltimos, qayta urinib ko‘ring.",
+      dateLabel: "Sana", timeLabel: "Vaqt", venueLabel: "Manzil",
+      countdown: ["kun","soat","daqiqa","soniya"], family: "Hurmat bilan Mahkamov oilasi",
+      closing: "Mehr bilan,"
+    },
+    ru: {
+      open: "Открыть приглашение", welcome: "Дорогой гость!",
+      invite1: "Для нас большая радость видеть вас рядом в самый прекрасный день нашей жизни. В этот незабываемый день, когда два сердца выбирают общий путь и начинают новую жизнь, мы хотим разделить с вами нашу радость.",
+      invite2: "Ваше присутствие и искренние пожелания — самый дорогой для нас подарок.",
+      invite3: "От всего сердца приглашаем вас на нашу свадьбу!",
+      map: "Посмотреть на карте ↗", nameLabel: "Ваше имя и фамилия",
+      namePlaceholder: "Например, Азиза Каримова", attendanceLabel: "Вы придёте?",
+      choose: "Выберите", yes: "Да, обязательно буду", no: "К сожалению, не смогу",
+      countLabel: "Сколько человек будет с вами?", person: "чел.",
+      submit: "Отправить ответ", thanks: "Ваш ответ отправлен. Спасибо!",
+      sending: "Отправляем ответ…", error: "Ошибка отправки. Попробуйте ещё раз.",
+      dateLabel: "Дата", timeLabel: "Время", venueLabel: "Адрес",
+      countdown: ["дней","часов","минут","секунд"], family: "С уважением, семья Махкамовых",
+      closing: "С любовью,"
+    },
+    en: {
+      open: "Open invitation", welcome: "Dear guest!",
+      invite1: "It would mean so much to have you with us on the most beautiful day of our lives. As two hearts choose one path and begin a new life together, we would love to share this unforgettable day and our happiness with you.",
+      invite2: "Your presence and warm wishes are the most precious gift to us.",
+      invite3: "We warmly invite you to our wedding!",
+      map: "View on map ↗", nameLabel: "Your full name",
+      namePlaceholder: "For example, Aziza Karimova", attendanceLabel: "Will you attend?",
+      choose: "Please choose", yes: "Yes, I’ll be there", no: "Sorry, I can’t attend",
+      countLabel: "How many people will come with you?", person: "person(s)",
+      submit: "Send response", thanks: "Your response has been sent. Thank you!",
+      sending: "Sending your response…", error: "Could not send. Please try again.",
+      dateLabel: "Date", timeLabel: "Time", venueLabel: "Venue",
+      countdown: ["days","hours","minutes","seconds"], family: "With regards, the Mahkamov family",
+      closing: "With love,"
+    }
+  };
+  const $ = (sel) => document.querySelector(sel);
+  function setText(sel, value) { const el=$(sel); if(el) el.textContent=value; }
+  function applyLanguage(lang) {
+    const t=translations[lang] || translations.uz;
+    document.documentElement.lang=lang;
+    document.querySelectorAll(".language-switcher button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===lang)));
+    setText("#openInvitation",t.open);
+    setText(".curtain-message .eyebrow",t.welcome);
+    document.querySelectorAll(".curtain-invitation").forEach((el,i)=>el.textContent=[t.invite1,t.invite2,t.invite3][i]||el.textContent);
+    setText("#mapLink",t.map);
+    const labels=$("#rsvpForm")?.querySelectorAll("label");
+    if(labels && labels.length>=3){
+      labels[0].querySelector("span").textContent=t.nameLabel;
+      labels[0].querySelector("input").placeholder=t.namePlaceholder;
+      labels[1].querySelector("span").textContent=t.attendanceLabel;
+      const opts=labels[1].querySelectorAll("option"); opts[0].textContent=t.choose; opts[1].textContent=t.yes; opts[2].textContent=t.no;
+      labels[2].querySelector("span").textContent=t.countLabel;
+      [...labels[2].querySelectorAll("option")].forEach((o,i)=>o.textContent=(i+1)+" "+t.person);
+    }
+    const submit=$("#rsvpForm button[type=submit]");
+    if(submit) submit.innerHTML=t.submit+" <span>✓</span>";
+    setText(".detail-row div:nth-of-type(1) small",t.dateLabel);
+    setText(".detail-row div:nth-of-type(2) small",t.timeLabel);
+    setText(".venue .eyebrow",t.venueLabel);
+    document.querySelectorAll(".countdown div span").forEach((el,i)=>el.textContent=t.countdown[i]);
+    setText(".family-name",t.family);
+    const closing=$(".closing p"); if(closing) closing.innerHTML=t.closing+"<br><strong>Xasanjon &amp; Dilnoza</strong>";
+    const status=$("#formStatus");
+    if(status && /Javobingiz yubildi|yuborilmoqda|xatolik/i.test(status.textContent)) status.textContent="";
+  }
+  document.querySelectorAll(".language-switcher button").forEach(b=>b.addEventListener("click",()=>applyLanguage(b.dataset.lang)));
+})();
+</script>
+
 </body>
 </html>
