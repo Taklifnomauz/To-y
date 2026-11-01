@@ -33,7 +33,13 @@ h1,h2,h3,p{margin-top:0}
 .curtain-right{right:0;transform:scaleX(-1);clip-path:polygon(0 0,100% 0,82% 100%,0 100%)}
 .curtain-light{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#fff8e8aa,transparent 40%)}
 .couple-large{bottom:12%;transform:translateX(-50%) scale(1.5)}
-.curtain-copy{position:absolute;top:12%;width:100%;padding:20px;text-align:center;color:#fff0d8;text-shadow:0 2px 12px #4b1b28}
+.curtain-copy{position:absolute;top:auto;bottom:7%;left:50%;transform:translateX(-50%);width:min(88%,680px);padding:0;text-align:center;color:#fff0d8;text-shadow:0 2px 12px #4b1b28;box-sizing:border-box}
+.curtain-message{padding:clamp(18px,3vw,28px);border:1px solid rgba(255,224,170,.68);border-radius:18px;background:rgba(55,8,22,.72);box-shadow:0 12px 32px rgba(0,0,0,.28);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);color:#fff0df;text-align:center}
+.curtain-message .eyebrow{margin-bottom:12px;color:#f0c77f;font-size:.8rem;letter-spacing:.12em}
+.curtain-invitation{margin:0 auto 10px;max-width:570px;color:#fff0df;font:500 clamp(.95rem,2.4vw,1.18rem)/1.5 "Cormorant Garamond",serif;text-shadow:0 1px 5px rgba(0,0,0,.65)}
+.curtain-last{margin-bottom:0;color:#ffe0a6;font-weight:600}
+.curtain-copy .round-link{display:none}
+@media(max-width:600px){.curtain-copy{width:90%;bottom:5%}.curtain-message{padding:16px 14px;border-radius:15px}.curtain-invitation{font-size:.95rem;line-height:1.4;margin-bottom:8px}.curtain-message .eyebrow{margin-bottom:9px;font-size:.72rem}}
 .initials{margin:12px 0;font:italic clamp(4rem,12vw,7rem)/1 "Cormorant Garamond",serif}
 .initials span{color:#d5a86b}
 .curtain-note{font:italic 1.2rem "Cormorant Garamond",serif}
