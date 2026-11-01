@@ -415,58 +415,59 @@ p {
   bottom: 10px;
 }
 
-/* 4 — RSVP: oq panel olib tashlandi, fon rasmi ochiq qoladi */
+/* 4 — RSVP: tayyor bezakli fon rasmi ochiq qoladi */
 .scene-rsvp {
   display: grid;
   place-items: center;
-  padding: 35px 18px;
+  min-height: 100svh;
+  padding: 28px 12px;
   background: #260a12;
   color: #fff0df;
 }
 
+.scene-rsvp .scene-image {
+  object-position: center center;
+}
+
 .scene-rsvp::before {
-  background: rgba(35, 5, 14, 0.12);
+  background: rgba(35, 5, 14, 0.08);
 }
 
 .rsvp-card {
+  position: relative;
+  z-index: 1;
   width: min(100%, 560px);
-  padding: clamp(24px, 5vw, 42px);
-  border: 1px solid rgba(216, 183, 122, 0.28);
-  border-radius: 18px;
-  background: rgba(38, 10, 18, 0.22);
+  padding: clamp(20px, 4vw, 38px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: #fff0df;
   text-align: center;
-  box-shadow: 0 18px 45px rgba(20, 3, 9, 0.18);
-}
-
-/* Kartaning ortida oq fon bo‘lmasin */
-.rsvp-card,
-.rsvp-card * {
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  box-shadow: none;
 }
 
 .rsvp-card .eyebrow {
-  color: #d8b77a;
+  color: #e6bd7b;
+  letter-spacing: 0.16em;
 }
 
 .envelope {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #e7b968;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .rsvp-intro {
-  max-width: 400px;
-  margin: 15px auto 25px;
+  max-width: 390px;
+  margin: 12px auto 22px;
   color: #f0d9c7;
-  font-size: 0.85rem;
-  line-height: 1.7;
+  font-size: 0.88rem;
+  line-height: 1.55;
 }
 
 #rsvpForm {
   display: grid;
-  gap: 15px;
+  gap: 14px;
   text-align: left;
 }
 
@@ -474,31 +475,30 @@ p {
   display: grid;
   gap: 7px;
   color: #f4dfc8;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 
 #rsvpForm input,
 #rsvpForm select {
   width: 100%;
-  min-height: 48px;
-  padding: 12px 15px;
-  border: 1px solid rgba(235, 195, 143, 0.78);
+  min-height: 46px;
+  padding: 11px 14px;
+  border: 1px solid rgba(235, 195, 143, 0.8);
   border-radius: 12px;
-  background: rgba(255, 232, 210, 0.08);
+  background: rgba(45, 12, 22, 0.68);
   color: #fff0df;
   outline: none;
-  box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.12);
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.18);
 }
 
 #rsvpForm input::placeholder {
-  color: rgba(255, 238, 221, 0.58);
+  color: rgba(255, 238, 221, 0.62);
 }
 
 #rsvpForm input:focus,
 #rsvpForm select:focus {
   border-color: #ffc66f;
-  background: rgba(255, 232, 210, 0.14);
+  background: rgba(65, 20, 31, 0.82);
   box-shadow: 0 0 0 3px rgba(255, 183, 80, 0.13);
 }
 
@@ -509,10 +509,10 @@ p {
 
 .submit-button {
   width: 100%;
-  min-height: 54px;
-  margin-top: 5px;
+  min-height: 52px;
+  margin-top: 4px;
   border: 1px solid #ffd184;
-  border-radius: 16px;
+  border-radius: 14px;
   background: linear-gradient(180deg, #8d4b20, #4b1b20);
   color: #fff0d2;
   font-size: 0.95rem;
@@ -539,8 +539,8 @@ p {
 }
 
 .closing {
-  margin-top: 25px;
-  padding-top: 18px;
+  margin-top: 20px;
+  padding-top: 14px;
   border-top: 1px solid rgba(230, 184, 120, 0.35);
   color: #e9cba8;
 }
@@ -551,12 +551,12 @@ p {
 
 .closing p {
   margin: 8px 0 0;
-  font: italic 1.2rem "Cormorant Garamond", serif;
+  font: italic 1.15rem "Cormorant Garamond", serif;
 }
 
 .closing strong {
   color: #ffdfaa;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
 }
 
@@ -574,28 +574,60 @@ p {
   }
 
   .rsvp-card {
-    padding: 24px 18px;
+    width: 74%;
+    padding: 18px 0;
   }
 
-  .countdown {
-    gap: 7px;
+  .rsvp-card .eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
   }
 
-  .countdown div {
-    min-width: 55px;
-    padding: 9px 3px;
-  }
-
-  .countdown strong {
+  .envelope {
+    margin-bottom: 7px;
     font-size: 1.5rem;
   }
 
-  .detail-row {
-    gap: 8px;
+  .rsvp-intro {
+    margin: 9px auto 16px;
+    font-size: 0.76rem;
+    line-height: 1.4;
   }
 
   #rsvpForm {
-    gap: 14px;
+    gap: 11px;
+  }
+
+  #rsvpForm label {
+    gap: 5px;
+    font-size: 0.72rem;
+  }
+
+  #rsvpForm input,
+  #rsvpForm select {
+    min-height: 40px;
+    padding: 9px 10px;
+    border-radius: 9px;
+    font-size: 0.8rem;
+  }
+
+  .submit-button {
+    min-height: 45px;
+    padding: 10px;
+    font-size: 0.82rem;
+  }
+
+  .closing {
+    margin-top: 14px;
+    padding-top: 10px;
+  }
+
+  .closing p {
+    font-size: 1rem;
+  }
+
+  .closing strong {
+    font-size: 1.2rem;
   }
 }
 
