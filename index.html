@@ -293,6 +293,48 @@
         animation: none;
       }
     }
+
+    /* Yakuniy RSVP sozlamalari: karta fonsiz, orqa rasm va undagi yozuvlar ko‘rinsin */
+    .scene.scene-rsvp {
+      background: transparent !important;
+    }
+
+    .scene.scene-rsvp::before {
+      background: transparent !important;
+    }
+
+    .scene.scene-rsvp .rsvp-card {
+      background: transparent !important;
+      background-color: transparent !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .scene.scene-rsvp .rsvp-card::before,
+    .scene.scene-rsvp .rsvp-card::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    .scene.scene-rsvp #rsvpForm input,
+    .scene.scene-rsvp #rsvpForm select {
+      background: rgba(38, 10, 18, .72) !important;
+      color: #fff4e5 !important;
+    }
+
+    .scene.scene-rsvp #rsvpForm input:focus,
+    .scene.scene-rsvp #rsvpForm select:focus {
+      background: rgba(38, 10, 18, .88) !important;
+    }
+
+    .scene.scene-rsvp #rsvpForm select option {
+      color: #fff4e5 !important;
+      background: #260a12 !important;
+    }
+
   </style>
 </head>
 
