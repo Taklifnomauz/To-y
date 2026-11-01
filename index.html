@@ -684,25 +684,36 @@
       }
     }, true);
 
-    openButton.addEventListener("click", async () => {
+    openButton.addEventListener("click", () => {
+      if (openButton.dataset.opened === "true") return;
+      openButton.dataset.opened = "true";
       openButton.disabled = true;
-      cover.classList.add("opening");
 
-      // Musiqa faqat foydalanuvchi tugmani bosganda boshlanadi.
-      try {
-        music.currentTime = 0;
-        await music.play();
-      } catch (error) {
-        console.error("Musiqa ishga tushmadi. music.mp3 faylini tekshiring:", error);
+      const gateImage = cover.querySelector(".scene-image");
+      const nextScene = document.getElementById("scene-two");
+
+      if (gateImage && typeof gateImage.animate === "function") {
+        gateImage.animate(
+          [{ transform: "scale(1)" }, { transform: "scale(1.7)" }],
+          { duration: 1800, easing: "ease-in", fill: "forwards" }
+        );
       }
 
-      // Yaqinlashish animatsiyasi tugagach, keyingi sahifaga o'tadi.
+      openButton.animate(
+        [
+          { opacity: 1, transform: "translateX(-50%) scale(1)" },
+          { opacity: 0, transform: "translateX(-50%) scale(.96)" }
+        ],
+        { duration: 350, easing: "ease-in", fill: "forwards" }
+      );
+
+      music.play().catch(error => {
+        console.warn("Musiqa boshlanmadi. music.mp3 yo‘lini tekshiring:", error);
+      });
+
       setTimeout(() => {
-        document.getElementById("scene-two").scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }, 2500);
+        nextScene.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 1850);
     });
   </script>
 </body>
