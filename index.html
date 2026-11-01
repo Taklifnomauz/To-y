@@ -48,51 +48,61 @@
       z-index: 1;
     }
 
-    /* Birinchi sahnadagi bosh harflar va ochish belgisi */
+    /* Birinchi sahna: bosh harflar darvoza ustida */
     .gate-initials {
       position: absolute;
+      inset: 0;
       z-index: 2;
-      top: 24%;
-      left: 50%;
-      transform: translateX(-50%);
+      pointer-events: none;
       color: #f7e4bd;
-      font: italic clamp(3rem, 9vw, 6rem)/1 "Cormorant Garamond", serif;
+      font: italic clamp(3rem, 8vw, 6rem)/1 "Cormorant Garamond", serif;
       text-shadow: 0 2px 18px #16040a;
-      white-space: nowrap;
     }
 
-    .gate-initials span {
-      color: #d8b77a;
+    .initial-a,
+    .initial-m {
+      position: absolute;
+      top: 32%;
+      transform: translate(-50%, -50%);
     }
 
+    .initial-a {
+      left: 42%;
+    }
+
+    .initial-m {
+      left: 58%;
+    }
+
+    /* Ochish tugmasi */
     .gate-open {
       position: absolute;
       z-index: 3;
       left: 50%;
       bottom: 8%;
       transform: translateX(-50%);
-      display: grid;
-      place-items: center;
-      width: 48px;
-      height: 48px;
+      padding: 14px 28px;
       border: 1px solid #d8b77a;
-      border-radius: 50%;
-      background: #260a12cc;
+      border-radius: 30px;
+      background: #260a12ed;
       color: #f7e4bd;
-      font-size: 1.5rem;
+      font: 500 .85rem "DM Sans", sans-serif;
+      white-space: nowrap;
       cursor: pointer;
+      box-shadow: 0 4px 18px #16040a66;
       transition: background .2s, transform .2s;
     }
 
     .gate-open:hover {
       background: #6d2638;
-      transform: translateX(-50%) scale(1.08);
+      transform: translateX(-50%) scale(1.04);
     }
 
     .gate-open:disabled {
       cursor: wait;
     }
 
+    /* Tugma bosilganda darvoza yaqinlashadi */
     .scene-cover.opening .scene-image {
       animation: gate-approach 1.5s ease-in forwards;
     }
@@ -109,6 +119,22 @@
 
     @keyframes fade-away {
       to { opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .initial-a {
+        left: 40%;
+      }
+
+      .initial-m {
+        left: 60%;
+      }
+
+      .gate-open {
+        bottom: 7%;
+        padding: 13px 22px;
+        font-size: .8rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -132,15 +158,13 @@
         alt="To‘y darvozasi"
       >
 
-      <div class="gate-initials">A <span>&amp;</span> M</div>
+      <div class="gate-initials" aria-label="A va M">
+        <span class="initial-a">A</span>
+        <span class="initial-m">M</span>
+      </div>
 
-      <button
-        class="gate-open"
-        id="openInvitation"
-        type="button"
-        aria-label="Taklifnomani ochish"
-      >
-        ↓
+      <button class="gate-open" id="openInvitation" type="button">
+        Taklifnomani ochish
       </button>
     </section>
 
