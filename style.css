@@ -228,4 +228,21 @@ h1,h2,h3,p{margin-top:0}
   text-shadow: 0 2px 6px rgba(0, 0, 0, .55);
   box-shadow: 0 8px 18px rgba(0, 0, 0, .28);
 }
+}/* Darvoza animatsiyasini majburan yoqish */
+.scene-cover.opening .scene-image {
+  animation: gate-approach 2.5s ease-in-out forwards !important;
+  transform-origin: center center;
+}
+
+.scene-cover.opening .gate-open {
+  animation: fade-away .5s ease-in forwards !important;
+}
+
+@keyframes gate-approach {
+  from { transform: scale(1); }
+  to   { transform: scale(1.7); }
+}
+
+@keyframes fade-away {
+  to { opacity: 0; }
 }
