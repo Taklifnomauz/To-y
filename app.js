@@ -14,7 +14,7 @@ const db =
     : null;
 
 // To'y sanasi: 18-dekabr 2026, soat 18:00.
-const weddingDate = new Date(2026, 11, 21, 18, 0, 0);
+const weddingDate = new Date(2026, 10, 21, 18, 0, 0);
 
 function updateCountdown() {
   const diff = Math.max(0, weddingDate.getTime() - Date.now());
