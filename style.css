@@ -709,7 +709,7 @@ p {
 
   .scene.scene-rsvp .rsvp-card {
     max-width: 560px;
-    transform: translateY(6cm);
+    transform: translateY(8cm);
   }
 }
 
@@ -729,7 +729,7 @@ p {
     width: 100%;
     max-width: 460px;
     padding: 12px 10px;
-    transform: translateY(2cm);
+    transform: translateY(4cm);
   }
 
   .scene.scene-rsvp .rsvp-card h1,
