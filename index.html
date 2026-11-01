@@ -20,15 +20,16 @@
         <div class="gate-leaf gate-left">
           <div class="gate-frame">
             <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">✦</div>
+            <div class="monogram">A</div>
             <div class="gate-rule"></div>
             <div class="gate-ornament bottom-ornament">❦</div>
           </div>
         </div>
+
         <div class="gate-leaf gate-right">
           <div class="gate-frame">
             <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">✦</div>
+            <div class="monogram">M</div>
             <div class="gate-rule"></div>
             <div class="gate-ornament bottom-ornament">❦</div>
           </div>
@@ -43,70 +44,79 @@
           Taklifnomani ochish <span aria-hidden="true">↗</span>
         </button>
       </div>
+
       <p class="cover-hint">Eshiklarni ochish uchun tugmani bosing</p>
     </section>
 
     <section class="invitation" id="invitation" aria-hidden="true">
       <div class="invitation-inner">
         <div class="ornament" aria-hidden="true">✦ ❦ ✦</div>
-        <div class="couple-initials" aria-label="M va A">M <span>&</span> A</div>
         <p class="eyebrow">Bismillahir rohmanir rohiym</p>
         <h2>Aziza <span>&</span> Mirjalol</h2>
-        <p class="intro">Hayotimizning eng go‘zal kunida sizni yonimizda ko‘rishdan mamnun bo‘lamiz.</p>
+        <p class="intro">
+          Hayotimizning eng go‘zal kunida sizni yonimizda ko‘rishdan mamnun bo‘lamiz.
+        </p>
 
         <section class="invite-part part-one" id="part-one">
-        <div class="date-card">
-          <span class="date-label">To‘y marosimi</span>
-          <strong>18</strong>
-          <span class="month">Dekabr · 2026</span>
-          <span class="time">Soat 18:00</span>
-        </div>
+          <div class="date-card">
+            <span class="date-label">To‘y marosimi</span>
+            <strong>18</strong>
+            <span class="month">Dekabr · 2026</span>
+            <span class="time">Soat 18:00</span>
+          </div>
 
-        <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
-          <div><strong id="days">—</strong><span>kun</span></div>
-          <div><strong id="hours">—</strong><span>soat</span></div>
-          <div><strong id="minutes">—</strong><span>daqiqa</span></div>
-          <div><strong id="seconds">—</strong><span>soniya</span></div>
-        </div>
-
+          <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
+            <div><strong id="days">—</strong><span>kun</span></div>
+            <div><strong id="hours">—</strong><span>soat</span></div>
+            <div><strong id="minutes">—</strong><span>daqiqa</span></div>
+            <div><strong id="seconds">—</strong><span>soniya</span></div>
+          </div>
         </section>
+
         <section class="invite-part part-two" id="part-two">
-        <div class="venue">
-          <p class="eyebrow">Manzil</p>
-          <h3>To‘y tantanasi</h3>
-          <p>Restoran nomi va manzil keyin qo‘shiladi</p>
-          <a class="text-link" id="mapLink" href="#" target="_blank" rel="noopener">Xaritada ko‘rish ↗</a>
-        </div>
-
+          <div class="venue">
+            <p class="eyebrow">Manzil</p>
+            <h3>To‘y tantanasi</h3>
+            <p>Restoran nomi va manzil keyin qo‘shiladi</p>
+            <a class="text-link" id="mapLink" href="#" target="_blank" rel="noopener">
+              Xaritada ko‘rish ↗
+            </a>
+          </div>
         </section>
-        <section class="invite-part part-three" id="part-three">
-        <form class="rsvp" id="rsvpForm">
-          <p class="eyebrow">Iltimos, tashrifingizni tasdiqlang</p>
-          <label>
-            Ismingiz
-            <input name="guest_name" type="text" placeholder="Ism-familiyangiz" required maxlength="120">
-          </label>
-          <label>
-            Tashrif buyurasizmi?
-            <select name="attendance" required>
-              <option value="" selected disabled>Tanlang</option>
-              <option value="yes">Ha, albatta kelaman</option>
-              <option value="no">Afsuski, bora olmayman</option>
-            </select>
-          </label>
-          <label>
-            Mehmonlar soni
-            <input name="guest_count" type="number" min="1" max="20" value="1" required>
-          </label>
-          <button class="submit-button" type="submit">Javobni yuborish</button>
-          <p class="form-status" id="formStatus" role="status"></p>
-        </form>
 
-        <footer>Mehr bilan, Aziza va Mirjalol</footer>
+        <section class="invite-part part-three" id="part-three">
+          <form class="rsvp" id="rsvpForm">
+            <p class="eyebrow">Iltimos, tashrifingizni tasdiqlang</p>
+
+            <label>
+              Ismingiz
+              <input name="guest_name" type="text" placeholder="Ism-familiyangiz" required maxlength="120">
+            </label>
+
+            <label>
+              Tashrif buyurasizmi?
+              <select name="attendance" required>
+                <option value="" selected disabled>Tanlang</option>
+                <option value="yes">Ha, albatta kelaman</option>
+                <option value="no">Afsuski, bora olmayman</option>
+              </select>
+            </label>
+
+            <label>
+              Mehmonlar soni
+              <input name="guest_count" type="number" min="1" max="20" value="1" required>
+            </label>
+
+            <button class="submit-button" type="submit">Javobni yuborish</button>
+            <p class="form-status" id="formStatus" role="status"></p>
+          </form>
+
+          <footer>Mehr bilan, Aziza va Mirjalol</footer>
         </section>
       </div>
     </section>
   </main>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
