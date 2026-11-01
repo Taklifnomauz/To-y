@@ -281,7 +281,9 @@ p {
   display: grid;
   place-items: center;
   padding: 36px 18px;
-  background: linear-gradient(160deg, #f8e7dd, #e5c4b6 70%, #c38d83);
+  background:
+    linear-gradient(rgba(38, 10, 18, 0.16), rgba(38, 10, 18, 0.22)),
+    url("saroy(4).png") center center / cover no-repeat;
   color: var(--ink);
 }
 
