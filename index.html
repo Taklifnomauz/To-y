@@ -14,14 +14,13 @@
   <main>
     <section class="cover" id="cover" aria-label="Taklifnomani ochish">
       <div class="cover-glow"></div>
-      <div class="curtain curtain-left"></div>
-      <div class="curtain curtain-right"></div>
+      <audio id="weddingMusic" preload="auto" loop src="music.mp3"></audio>
 
       <div class="gate" id="gate">
         <div class="gate-leaf gate-left">
           <div class="gate-frame">
             <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">M</div>
+            <div class="monogram">✦</div>
             <div class="gate-rule"></div>
             <div class="gate-ornament bottom-ornament">❦</div>
           </div>
@@ -29,7 +28,7 @@
         <div class="gate-leaf gate-right">
           <div class="gate-frame">
             <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">A</div>
+            <div class="monogram">✦</div>
             <div class="gate-rule"></div>
             <div class="gate-ornament bottom-ornament">❦</div>
           </div>
@@ -50,10 +49,12 @@
     <section class="invitation" id="invitation" aria-hidden="true">
       <div class="invitation-inner">
         <div class="ornament" aria-hidden="true">✦ ❦ ✦</div>
+        <div class="couple-initials" aria-label="M va A">M <span>&</span> A</div>
         <p class="eyebrow">Bismillahir rohmanir rohiym</p>
         <h2>Aziza <span>&</span> Mirjalol</h2>
         <p class="intro">Hayotimizning eng go‘zal kunida sizni yonimizda ko‘rishdan mamnun bo‘lamiz.</p>
 
+        <section class="invite-part part-one" id="part-one">
         <div class="date-card">
           <span class="date-label">To‘y marosimi</span>
           <strong>18</strong>
@@ -68,6 +69,8 @@
           <div><strong id="seconds">—</strong><span>soniya</span></div>
         </div>
 
+        </section>
+        <section class="invite-part part-two" id="part-two">
         <div class="venue">
           <p class="eyebrow">Manzil</p>
           <h3>To‘y tantanasi</h3>
@@ -75,6 +78,8 @@
           <a class="text-link" id="mapLink" href="#" target="_blank" rel="noopener">Xaritada ko‘rish ↗</a>
         </div>
 
+        </section>
+        <section class="invite-part part-three" id="part-three">
         <form class="rsvp" id="rsvpForm">
           <p class="eyebrow">Iltimos, tashrifingizni tasdiqlang</p>
           <label>
@@ -98,6 +103,7 @@
         </form>
 
         <footer>Mehr bilan, Aziza va Mirjalol</footer>
+        </section>
       </div>
     </section>
   </main>

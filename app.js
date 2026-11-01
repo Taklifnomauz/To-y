@@ -7,13 +7,15 @@ const db = supabaseReady && window.supabase ? window.supabase.createClient(SUPAB
 const cover = document.getElementById("cover");
 const invitation = document.getElementById("invitation");
 document.getElementById("openInvite").addEventListener("click", () => {
+  const music = document.getElementById("weddingMusic");
+  if (music) { music.volume = 0.35; music.play().catch(() => {}); }
   cover.classList.add("opening");
   window.setTimeout(() => {
     cover.hidden = true;
     invitation.classList.add("visible");
     invitation.setAttribute("aria-hidden", "false");
     invitation.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 1900);
+  }, 3900);
 });
 
 // To'y sanasi: 18-dekabr 2026, soat 18:00 (mahalliy vaqt).
