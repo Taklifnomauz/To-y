@@ -4,187 +4,134 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260a12">
-  <meta
-    name="description"
-    content="Aziza va Mirjalolning to‘y taklifnomasi. Marosim sanasi, manzili va tashrifni tasdiqlash."
-  >
-
-  <title>Silk Romance — Taklifnoma</title>
-
+  <title>Aziza & Mirjalol — Taklifnoma</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <main>
-    <!-- Taklifnomani ochish sahifasi -->
-    <section class="cover" id="cover" aria-label="Taklifnomani ochish">
-      <div class="cover-glow" aria-hidden="true"></div>
+  <main class="invitation">
 
-      <audio
-        id="weddingMusic"
-        preload="auto"
-        loop
-        src="music.mp3"
-      ></audio>
-
-      <div class="gate" id="gate" aria-hidden="true">
-        <div class="gate-leaf gate-left">
-          <div class="gate-frame">
-            <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">✦</div>
-            <div class="gate-rule"></div>
-            <div class="gate-ornament bottom-ornament">❦</div>
-          </div>
-        </div>
-
-        <div class="gate-leaf gate-right">
-          <div class="gate-frame">
-            <div class="gate-ornament top-ornament">✦</div>
-            <div class="monogram">✦</div>
-            <div class="gate-rule"></div>
-            <div class="gate-ornament bottom-ornament">❦</div>
-          </div>
+    <!-- 1-ekran: uzoqdagi darvoza va yo‘lak -->
+    <section class="scene scene-cover" id="cover">
+      <div class="cover-sky"></div>
+      <div class="distant-gate" aria-hidden="true">
+        <div class="gate-arch">
+          <div class="gate-door gate-door-left"></div>
+          <div class="gate-door gate-door-right"></div>
+          <div class="gate-light"></div>
         </div>
       </div>
 
-      <div class="cover-copy" id="coverCopy">
-        <p class="eyebrow">Sizni to‘yimizga taklif qilamiz</p>
+      <div class="walkway" aria-hidden="true"></div>
+      <div class="couple-silhouette" aria-hidden="true">
+        <span class="person groom"></span>
+        <span class="person bride"></span>
+      </div>
 
+      <div class="scene-copy cover-copy">
+        <p class="eyebrow">Elektron taklifnoma</p>
         <h1>Aziza <span>&amp;</span> Mirjalol</h1>
-
         <p class="cover-date">18 · 12 · 2026</p>
-
-        <button class="open-button" id="openInvite" type="button">
-          Taklifnomani ochish
-          <span aria-hidden="true">↗</span>
-        </button>
+        <a class="gold-button" href="#scene-two">Taklifnomani ochish <span>↗</span></a>
+        <p class="scroll-hint">Pastga suring ↓</p>
       </div>
-
-      <p class="cover-hint">Eshiklarni ochish uchun tugmani bosing</p>
     </section>
 
-    <!-- Asosiy taklifnoma -->
-    <section class="invitation" id="invitation" aria-hidden="true">
-      <div class="invitation-inner">
-        <div class="ornament" aria-hidden="true">✦ ❦ ✦</div>
+    <!-- 2-ekran: parda va juftlik -->
+    <section class="scene scene-curtain" id="scene-two">
+      <div class="curtain-backdrop">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+        <div class="curtain-light"></div>
+        <div class="couple-silhouette couple-large" aria-hidden="true">
+          <span class="person groom"></span>
+          <span class="person bride"></span>
+        </div>
+      </div>
 
-        <div class="couple-initials" aria-label="M va A">
-          M <span>&amp;</span> A
+      <div class="scene-copy curtain-copy">
+        <p class="eyebrow">Bir umrga birga</p>
+        <div class="initials">A <span>&amp;</span> M</div>
+        <p class="curtain-note">Hayotimizning eng go‘zal kuniga xush kelibsiz</p>
+        <a class="round-link" href="#scene-three" aria-label="Keyingi sahifa">↓</a>
+      </div>
+    </section>
+
+    <!-- 3-ekran: sana va manzil -->
+    <section class="scene scene-details" id="scene-three">
+      <div class="floral floral-top" aria-hidden="true">✿ ❀ ✿</div>
+      <div class="details-card">
+        <p class="eyebrow">Sizni oilamizning eng muhim kuniga taklif qilamiz</p>
+        <h2>Aziza <span>&amp;</span> Mirjalol</h2>
+        <p class="intro">Hayotimizning yangi sahifasini siz azizlarimiz bilan birga boshlashdan mamnunmiz.</p>
+
+        <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
+          <div><strong id="days">—</strong><span>kun</span></div>
+          <div><strong id="hours">—</strong><span>soat</span></div>
+          <div><strong id="minutes">—</strong><span>daqiqa</span></div>
+          <div><strong id="seconds">—</strong><span>soniya</span></div>
         </div>
 
-        <p class="eyebrow">Bismillahir rohmanir rohiym</p>
+        <div class="detail-row">
+          <span class="detail-icon">▣</span>
+          <div><small>Sana</small><strong>18-dekabr, 2026-yil</strong></div>
+          <span class="detail-icon">◷</span>
+          <div><small>Vaqt</small><strong>Soat 18:00</strong></div>
+        </div>
 
-        <h2>Aziza <span>&amp;</span> Mirjalol</h2>
+        <div class="venue">
+          <p class="eyebrow">Manzil</p>
+          <h3>Marvarid to‘yxonasi</h3>
+          <p>Toshkent shahri, manzil keyin aniqlashtiriladi</p>
+          <a class="gold-button small-button" id="mapLink" href="https://yandex.com/maps/" target="_blank" rel="noopener">Xaritada ko‘rish ↗</a>
+        </div>
+      </div>
+      <div class="floral floral-bottom" aria-hidden="true">✿ ❀ ✿</div>
+    </section>
 
-        <p class="intro">
-          Hayotimizning eng go‘zal kunida sizni yonimizda ko‘rishdan mamnun bo‘lamiz.
-        </p>
+    <!-- 4-ekran: RSVP -->
+    <section class="scene scene-rsvp" id="scene-four">
+      <div class="rsvp-card">
+        <div class="envelope" aria-hidden="true">✉</div>
+        <p class="eyebrow">Ishtirokingiz biz uchun muhim</p>
+        <p class="rsvp-intro">Iltimos, quyidagi ma’lumotlarni to‘ldirib, to‘yimizda ishtirok etishingizni tasdiqlang.</p>
 
-        <!-- Sana va ortga sanash -->
-        <section class="invite-part part-one" id="part-one">
-          <div class="date-card">
-            <span class="date-label">To‘y marosimi</span>
-            <strong>18</strong>
-            <span class="month">Dekabr · 2026</span>
-            <span class="time">Soat 18:00</span>
-          </div>
+        <form id="rsvpForm">
+          <label>
+            <span>Ism va familiyangiz</span>
+            <input name="guest_name" type="text" placeholder="Masalan, Dilnoza Karimova" maxlength="120" required>
+          </label>
 
-          <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
-            <div>
-              <strong id="days">—</strong>
-              <span>kun</span>
-            </div>
+          <label>
+            <span>Ishtirok etasizmi?</span>
+            <select name="attendance" required>
+              <option value="" selected disabled>Tanlang</option>
+              <option value="yes">Ha, albatta kelaman</option>
+              <option value="no">Afsuski, bora olmayman</option>
+            </select>
+          </label>
 
-            <div>
-              <strong id="hours">—</strong>
-              <span>soat</span>
-            </div>
+          <label>
+            <span>O‘zingiz bilan nechta kishi kelasiz?</span>
+            <select name="guest_count" required>
+              <option value="1" selected>1 kishi</option>
+              <option value="2">2 kishi</option>
+              <option value="3">3 kishi</option>
+              <option value="4">4 kishi</option>
+              <option value="5">5 kishi</option>
+            </select>
+          </label>
 
-            <div>
-              <strong id="minutes">—</strong>
-              <span>daqiqa</span>
-            </div>
+          <button class="gold-button submit-button" type="submit">Javobni yuborish <span>✓</span></button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
 
-            <div>
-              <strong id="seconds">—</strong>
-              <span>soniya</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- Marosim manzili -->
-        <section class="invite-part part-two" id="part-two">
-          <div class="venue">
-            <p class="eyebrow">Manzil</p>
-            <h3>To‘y tantanasi</h3>
-            <p>Restoran nomi va manzil keyin qo‘shiladi</p>
-
-            <a
-              class="text-link"
-              id="mapLink"
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Xaritada ko‘rish ↗
-            </a>
-          </div>
-        </section>
-
-        <!-- Mehmon javobi -->
-        <section class="invite-part part-three" id="part-three">
-          <form class="rsvp" id="rsvpForm">
-            <p class="eyebrow">Iltimos, tashrifingizni tasdiqlang</p>
-
-            <label>
-              Ismingiz
-              <input
-                name="guest_name"
-                type="text"
-                placeholder="Ism-familiyangiz"
-                required
-                maxlength="120"
-                autocomplete="name"
-              >
-            </label>
-
-            <label>
-              Tashrif buyurasizmi?
-              <select name="attendance" required>
-                <option value="" selected disabled>Tanlang</option>
-                <option value="yes">Ha, albatta kelaman</option>
-                <option value="no">Afsuski, bora olmayman</option>
-              </select>
-            </label>
-
-            <label>
-              Mehmonlar soni
-              <input
-                name="guest_count"
-                type="number"
-                min="1"
-                max="20"
-                value="1"
-                required
-              >
-            </label>
-
-            <button class="submit-button" type="submit">
-              Javobni yuborish
-            </button>
-
-            <p class="form-status" id="formStatus" role="status"></p>
-          </form>
-
-          <footer>Mehr bilan, Aziza va Mirjalol</footer>
-        </section>
+        <div class="closing">
+          <span>✿</span>
+          <p>Mehr bilan,<br><strong>Aziza va Mirjalol</strong></p>
+        </div>
       </div>
     </section>
   </main>
