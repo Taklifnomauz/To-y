@@ -120,7 +120,6 @@
       margin: 0 auto;
       padding: clamp(24px, 5vw, 48px);
       color: #f8e9d5;
-      /* Karta foni olib tashlandi — RSVP orqa rasmi to‘liq ko‘rinadi */
       background: transparent !important;
       border: 0;
       border-radius: 0;
@@ -294,7 +293,7 @@
       }
     }
 
-    /* Yakuniy RSVP sozlamalari: karta fonsiz, orqa rasm va undagi yozuvlar ko‘rinsin */
+    /* RSVP yakuniy sozlamalari */
     .scene.scene-rsvp {
       background: transparent !important;
     }
@@ -335,8 +334,7 @@
       background: #260a12 !important;
     }
 
-
-    /* RSVP joylashuvi: telefon va desktopda rasm matni forma bilan to‘qnashmasin */
+    /* RSVP joylashuvi */
     .scene.scene-rsvp {
       position: relative;
       min-height: 100vh;
@@ -375,6 +373,7 @@
       .scene.scene-rsvp {
         padding: 210px 24px 100px;
       }
+
       .scene.scene-rsvp > .scene-image {
         object-position: center top;
       }
@@ -385,23 +384,26 @@
         min-height: 100svh;
         padding: 230px 18px 95px;
       }
+
       .scene.scene-rsvp > .scene-image {
         object-position: center top;
       }
+
       .scene.scene-rsvp .rsvp-card {
         width: 100%;
         max-width: 460px;
       }
+
       .scene.scene-rsvp #rsvpForm {
         gap: 14px;
       }
+
       .scene.scene-rsvp #rsvpForm input,
       .scene.scene-rsvp #rsvpForm select {
         min-height: 48px;
         font-size: 15px;
       }
     }
-
   </style>
 </head>
 
@@ -448,8 +450,11 @@
       >
 
       <div class="details-card">
-        <h2>Xasanjon <span>&amp;</span> Dilnoza</h2>
-        <p class="intro"> Sizni oilamizning eng muhim kuniga taklif qilamiz Hayotimizning yangi sahifasini siz azizlarimiz bilan birga boshlashdan mamnunmiz.</p>
+        <h2>
+          <span class="groom-name">Xasanjon</span>
+          <span class="name-ampersand">&amp;</span>
+          <span class="bride-name">Dilnoza</span>
+        </h2>
 
         <div class="countdown" aria-label="To‘ygacha qolgan vaqt">
           <div><strong id="days">—</strong><span>kun</span></div>
