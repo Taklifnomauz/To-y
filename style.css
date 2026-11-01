@@ -170,4 +170,19 @@ h1,h2,h3,p{margin-top:0}
 
 .details-card .venue {
   border-top-color: rgba(255, 224, 180, 0.5);
+}/* Ism aniqroq ko‘rinsin */
+.details-card h2 {
+  color: #fff5e4;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 0 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Sana-vaqtni biroz yuqoriga ko‘tarish */
+.details-card .countdown {
+  margin-top: 14px;
+}
+
+.details-card .detail-row {
+  margin-top: 14px;
 }
