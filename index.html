@@ -101,6 +101,33 @@
       to { opacity: 0; }
     }
 
+    /* 2-sahna taklif matni */
+    .curtain-copy {
+      top: 50%; left: 50%; width: min(88%, 680px); padding: 0;
+      transform: translate(-50%, -50%); box-sizing: border-box;
+    }
+    .curtain-message {
+      padding: clamp(22px, 4vw, 38px);
+      border: 1px solid rgba(255,224,170,.68); border-radius: 18px;
+      background: rgba(55,8,22,.72); box-shadow: 0 12px 32px rgba(0,0,0,.28);
+      backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+      color: #fff0df; text-align: center;
+    }
+    .curtain-message .eyebrow { margin-bottom: 14px; color: #f0c77f; font-size: .8rem; letter-spacing: .12em; }
+    .curtain-invitation {
+      margin: 0 auto 12px; max-width: 570px; color: #fff0df;
+      font: 500 clamp(.95rem,2.4vw,1.18rem)/1.55 "Cormorant Garamond",serif;
+      text-shadow: 0 1px 5px rgba(0,0,0,.65);
+    }
+    .curtain-last { margin-bottom: 0; color: #ffe0a6; font-weight: 600; }
+    .curtain-copy .round-link { display: grid; margin: 16px auto 0; background: rgba(55,8,22,.6); }
+    @media(max-width:600px) {
+      .curtain-copy { width: 90%; }
+      .curtain-message { padding: 18px 16px; border-radius: 15px; }
+      .curtain-invitation { font-size: .98rem; line-height: 1.45; margin-bottom: 9px; }
+      .curtain-message .eyebrow { margin-bottom: 10px; font-size: .72rem; }
+    }
+
     /* RSVP: oq karta yo‘q, fon rasmi ko‘rinib turadi */
     .scene-rsvp {
       background: transparent !important;
@@ -432,11 +459,12 @@
       >
 
       <div class="scene-copy curtain-copy">
-        <p class="eyebrow">Bir umrga birga</p>
-        <div class="initials">X <span>&amp;</span> D</div>
-        <p class="curtain-note">
-          Hayotimizning eng go‘zal kuniga xush kelibsiz
-        </p>
+        <div class="curtain-message">
+          <p class="eyebrow">Aziz mehmonimiz!</p>
+          <p class="curtain-invitation">Hayotimizning eng go‘zal kunida sizni yonimizda ko‘rish biz uchun katta baxt. Ikki qalb bir yo‘lni tanlab, yangi hayot sari qadam qo‘yayotgan ushbu unutilmas kunda quvonchimizga sherik bo‘lishingizni istaymiz.</p>
+          <p class="curtain-invitation">Tashrifingiz va samimiy tilaklaringiz biz uchun eng qadrli sovg‘adir.</p>
+          <p class="curtain-invitation curtain-last">Sizni to‘yimizga chin qalbimizdan taklif etamiz!</p>
+        </div>
         <a class="round-link" href="#scene-three" aria-label="Keyingi sahifa">↓</a>
       </div>
     </section>
