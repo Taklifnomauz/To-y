@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260a12">
-  <title>Aziza &amp; Mirjalol — Taklifnoma</title>
+  <title>Xasanjon &amp; Dilnoza — Taklifnoma</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,32 +48,6 @@
       z-index: 1;
     }
 
-    /* Birinchi sahna: bosh harflar darvoza ustida */
-    .gate-initials {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      color: #f7e4bd;
-      font: italic clamp(3rem, 8vw, 6rem)/1 "Cormorant Garamond", serif;
-      text-shadow: 0 2px 18px #16040a;
-    }
-
-    .initial-a,
-    .initial-m {
-      position: absolute;
-      top: 32%;
-      transform: translate(-50%, -50%);
-    }
-
-    .initial-a {
-      left: 42%;
-    }
-
-    .initial-m {
-      left: 58%;
-    }
-
     /* Ochish tugmasi */
     .gate-open {
       position: absolute;
@@ -81,21 +55,28 @@
       left: 50%;
       bottom: 8%;
       transform: translateX(-50%);
-      padding: 14px 28px;
+      min-width: 190px;
+      padding: 17px 38px;
       border: 1px solid #d8b77a;
-      border-radius: 30px;
+      border-radius: 32px;
       background: #260a12ed;
       color: #f7e4bd;
-      font: 500 .85rem "DM Sans", sans-serif;
+      font: 600 1.1rem "DM Sans", sans-serif;
+      letter-spacing: .03em;
       white-space: nowrap;
       cursor: pointer;
-      box-shadow: 0 4px 18px #16040a66;
-      transition: background .2s, transform .2s;
+      box-shadow: 0 6px 22px #16040a88;
+      transition: background .2s, transform .2s, box-shadow .2s;
     }
 
     .gate-open:hover {
       background: #6d2638;
-      transform: translateX(-50%) scale(1.04);
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 8px 28px #16040aaa;
+    }
+
+    .gate-open:active {
+      transform: translateX(-50%) scale(.98);
     }
 
     .gate-open:disabled {
@@ -104,12 +85,11 @@
 
     /* Tugma bosilganda darvoza yaqinlashadi */
     .scene-cover.opening .scene-image {
-      animation: gate-approach 1.5s ease-in forwards;
+      animation: gate-approach 2.5s ease-in forwards;
     }
 
-    .scene-cover.opening .gate-initials,
     .scene-cover.opening .gate-open {
-      animation: fade-away .8s ease-in forwards;
+      animation: fade-away .1s ease-in forwards;
     }
 
     @keyframes gate-approach {
@@ -122,24 +102,16 @@
     }
 
     @media (max-width: 600px) {
-      .initial-a {
-        left: 40%;
-      }
-
-      .initial-m {
-        left: 60%;
-      }
-
       .gate-open {
         bottom: 7%;
-        padding: 13px 22px;
-        font-size: .8rem;
+        min-width: 175px;
+        padding: 15px 30px;
+        font-size: 1rem;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .scene-cover.opening .scene-image,
-      .scene-cover.opening .gate-initials,
       .scene-cover.opening .gate-open {
         animation: none;
       }
@@ -150,18 +122,13 @@
 <body>
   <main class="invitation">
 
-    <!-- 1-sahna: darvoza va bosh harflar -->
+    <!-- 1-sahna: darvoza -->
     <section class="scene scene-cover" id="cover">
       <img
         class="scene-image"
         src="Image/darvoza.png"
         alt="To‘y darvozasi"
       >
-
-      <div class="gate-initials" aria-label="A va M">
-        <span class="initial-a">A</span>
-        <span class="initial-m">M</span>
-      </div>
 
       <button class="gate-open" id="openInvitation" type="button">
         Taklifnomani ochish
@@ -178,7 +145,7 @@
 
       <div class="scene-copy curtain-copy">
         <p class="eyebrow">Bir umrga birga</p>
-        <div class="initials">A <span>&amp;</span> M</div>
+        <div class="initials">X <span>&amp;</span> D</div>
         <p class="curtain-note">
           Hayotimizning eng go‘zal kuniga xush kelibsiz
         </p>
@@ -199,7 +166,7 @@
           Sizni oilamizning eng muhim kuniga taklif qilamiz
         </p>
 
-        <h2>Aziza <span>&amp;</span> Mirjalol</h2>
+        <h2>Xasanjon <span>&amp;</span> Dilnoza</h2>
 
         <p class="intro">
           Hayotimizning yangi sahifasini siz azizlarimiz bilan birga
@@ -303,7 +270,7 @@
 
         <div class="closing">
           <span>✿</span>
-          <p>Mehr bilan,<br><strong>Aziza va Mirjalol</strong></p>
+          <p>Mehr bilan,<br><strong>Xasanjon vs Dilnoza</strong></p>
         </div>
       </div>
     </section>
