@@ -4,31 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#260a12">
-  <title>Aziza & Mirjalol — Taklifnoma</title>
+  <title>Aziza &amp; Mirjalol — Taklifnoma</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .scene { position: relative; isolation: isolate; overflow: hidden; }
+    .scene-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+    }
+    .scene::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,5,12,.18), rgba(20,5,12,.48));
+      z-index: -1;
+      pointer-events: none;
+    }
+    .scene-copy, .details-card, .rsvp-card { position: relative; z-index: 1; }
+  </style>
 </head>
+
 <body>
   <main class="invitation">
 
-    <!-- 1-ekran: uzoqdagi darvoza va yo‘lak -->
+    <!-- 1-sahna: darvoza -->
     <section class="scene scene-cover" id="cover">
-      <div class="cover-sky"></div>
-      <div class="distant-gate" aria-hidden="true">
-        <div class="gate-arch">
-          <div class="gate-door gate-door-left"></div>
-          <div class="gate-door gate-door-right"></div>
-          <div class="gate-light"></div>
-        </div>
-      </div>
-
-      <div class="walkway" aria-hidden="true"></div>
-      <div class="couple-silhouette" aria-hidden="true">
-        <span class="person groom"></span>
-        <span class="person bride"></span>
-      </div>
+      <img class="scene-image" src="images/darvoza.png" alt="To‘y darvozasi va gullar bilan bezatilgan yo‘lak">
 
       <div class="scene-copy cover-copy">
         <p class="eyebrow">Elektron taklifnoma</p>
@@ -39,17 +50,9 @@
       </div>
     </section>
 
-    <!-- 2-ekran: parda va juftlik -->
+    <!-- 2-sahna: parda va kelin-kuyov -->
     <section class="scene scene-curtain" id="scene-two">
-      <div class="curtain-backdrop">
-        <div class="curtain-left"></div>
-        <div class="curtain-right"></div>
-        <div class="curtain-light"></div>
-        <div class="couple-silhouette couple-large" aria-hidden="true">
-          <span class="person groom"></span>
-          <span class="person bride"></span>
-        </div>
-      </div>
+      <img class="scene-image" src="images/parda.png" alt="Ochilayotgan pardalar oldidagi kelin-kuyov">
 
       <div class="scene-copy curtain-copy">
         <p class="eyebrow">Bir umrga birga</p>
@@ -59,9 +62,10 @@
       </div>
     </section>
 
-    <!-- 3-ekran: sana va manzil -->
+    <!-- 3-sahna: sana va manzil -->
     <section class="scene scene-details" id="scene-three">
-      <div class="floral floral-top" aria-hidden="true">✿ ❀ ✿</div>
+      <img class="scene-image" src="images/saroy.png" alt="To‘yxona va bezatilgan hovli">
+
       <div class="details-card">
         <p class="eyebrow">Sizni oilamizning eng muhim kuniga taklif qilamiz</p>
         <h2>Aziza <span>&amp;</span> Mirjalol</h2>
@@ -88,11 +92,12 @@
           <a class="gold-button small-button" id="mapLink" href="https://yandex.com/maps/" target="_blank" rel="noopener">Xaritada ko‘rish ↗</a>
         </div>
       </div>
-      <div class="floral floral-bottom" aria-hidden="true">✿ ❀ ✿</div>
     </section>
 
-    <!-- 4-ekran: RSVP -->
+    <!-- 4-sahna: RSVP -->
     <section class="scene scene-rsvp" id="scene-four">
+      <img class="scene-image" src="images/rsvp.png" alt="To‘yga kelishni tasdiqlash sahnasi">
+
       <div class="rsvp-card">
         <div class="envelope" aria-hidden="true">✉</div>
         <p class="eyebrow">Ishtirokingiz biz uchun muhim</p>
