@@ -335,6 +335,73 @@
       background: #260a12 !important;
     }
 
+
+    /* RSVP joylashuvi: telefon va desktopda rasm matni forma bilan to‘qnashmasin */
+    .scene.scene-rsvp {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      height: auto;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 190px 24px 90px;
+      box-sizing: border-box;
+    }
+
+    .scene.scene-rsvp > .scene-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: -2;
+    }
+
+    .scene.scene-rsvp .rsvp-card {
+      width: min(100%, 680px);
+      margin: 0 auto;
+      padding: 0;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    @media (min-width: 601px) {
+      .scene.scene-rsvp {
+        padding: 210px 24px 100px;
+      }
+      .scene.scene-rsvp > .scene-image {
+        object-position: center top;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .scene.scene-rsvp {
+        min-height: 100svh;
+        padding: 230px 18px 95px;
+      }
+      .scene.scene-rsvp > .scene-image {
+        object-position: center top;
+      }
+      .scene.scene-rsvp .rsvp-card {
+        width: 100%;
+        max-width: 460px;
+      }
+      .scene.scene-rsvp #rsvpForm {
+        gap: 14px;
+      }
+      .scene.scene-rsvp #rsvpForm input,
+      .scene.scene-rsvp #rsvpForm select {
+        min-height: 48px;
+        font-size: 15px;
+      }
+    }
+
   </style>
 </head>
 
