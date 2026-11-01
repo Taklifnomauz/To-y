@@ -37,7 +37,6 @@ select {
   isolation: isolate;
 }
 
-/* Sahna rasmlari */
 .scene-image {
   position: absolute;
   inset: 0;
@@ -115,12 +114,10 @@ p {
   background: #2a0712;
 }
 
-/* Birinchi oynada A va M yozuvlari ko‘rinmaydi */
 .gate-initials {
   display: none;
 }
 
-/* Katta “Ochish” tugmasi */
 .gate-open {
   position: absolute;
   z-index: 3;
@@ -158,7 +155,6 @@ p {
   cursor: wait;
 }
 
-/* Tugma bosilganda darvoza yaqinlashadi */
 .scene-cover.opening .scene-image {
   animation: gate-approach 1.5s ease-in forwards;
 }
@@ -419,35 +415,52 @@ p {
   bottom: 10px;
 }
 
-/* 4 — RSVP */
+/* 4 — RSVP: oq panel olib tashlandi, fon rasmi ochiq qoladi */
 .scene-rsvp {
   display: grid;
   place-items: center;
   padding: 35px 18px;
-  background: linear-gradient(150deg, #f3d9cf, #fff0e7 50%, #d7aaa0);
-  color: var(--ink);
+  background: #260a12;
+  color: #fff0df;
+}
+
+.scene-rsvp::before {
+  background: rgba(35, 5, 14, 0.12);
 }
 
 .rsvp-card {
   width: min(100%, 560px);
-  padding: clamp(24px, 5vw, 48px);
-  border: 1px solid #c6a36b;
-  background: #fff8f1ef;
+  padding: clamp(24px, 5vw, 42px);
+  border: 1px solid rgba(216, 183, 122, 0.28);
+  border-radius: 18px;
+  background: rgba(38, 10, 18, 0.22);
+  color: #fff0df;
   text-align: center;
-  box-shadow: 0 20px 55px #58232b20;
+  box-shadow: 0 18px 45px rgba(20, 3, 9, 0.18);
+}
+
+/* Kartaning ortida oq fon bo‘lmasin */
+.rsvp-card,
+.rsvp-card * {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.rsvp-card .eyebrow {
+  color: #d8b77a;
 }
 
 .envelope {
   margin-bottom: 12px;
-  color: #b47e68;
+  color: #e7b968;
   font-size: 2rem;
 }
 
 .rsvp-intro {
   max-width: 400px;
   margin: 15px auto 25px;
-  color: #8b6963;
-  font-size: 0.8rem;
+  color: #f0d9c7;
+  font-size: 0.85rem;
   line-height: 1.7;
 }
 
@@ -460,50 +473,80 @@ p {
 #rsvpForm label {
   display: grid;
   gap: 7px;
-  color: #79564f;
-  font-size: 0.75rem;
+  color: #f4dfc8;
+  font-size: 0.8rem;
 }
 
 #rsvpForm input,
 #rsvpForm select {
   width: 100%;
-  min-height: 44px;
-  padding: 12px;
-  border: 1px solid #dec6b8;
-  border-radius: 8px;
-  background: #fffaf6;
-  color: #4a202b;
+  min-height: 48px;
+  padding: 12px 15px;
+  border: 1px solid rgba(235, 195, 143, 0.78);
+  border-radius: 12px;
+  background: rgba(255, 232, 210, 0.08);
+  color: #fff0df;
   outline: none;
+  box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.12);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+#rsvpForm input::placeholder {
+  color: rgba(255, 238, 221, 0.58);
 }
 
 #rsvpForm input:focus,
 #rsvpForm select:focus {
-  border-color: #b57b6c;
-  box-shadow: 0 0 0 3px #b57b6c20;
+  border-color: #ffc66f;
+  background: rgba(255, 232, 210, 0.14);
+  box-shadow: 0 0 0 3px rgba(255, 183, 80, 0.13);
+}
+
+#rsvpForm select option {
+  color: #2b1018;
+  background: #f8e9d5;
 }
 
 .submit-button {
   width: 100%;
+  min-height: 54px;
   margin-top: 5px;
+  border: 1px solid #ffd184;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #8d4b20, #4b1b20);
+  color: #fff0d2;
+  font-size: 0.95rem;
+  box-shadow:
+    0 0 0 2px rgba(255, 193, 98, 0.15),
+    0 8px 22px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 238, 195, 0.4);
+}
+
+.submit-button:hover {
+  filter: brightness(1.12);
+}
+
+.submit-button span {
+  color: #ffe2a4;
 }
 
 .form-status {
   min-height: 1em;
   margin: 0;
   text-align: center;
-  color: #79564f;
+  color: #f8dfb5;
   font-size: 0.8rem;
 }
 
 .closing {
   margin-top: 25px;
   padding-top: 18px;
-  border-top: 1px solid #e3c9b9;
-  color: #9a6f5c;
+  border-top: 1px solid rgba(230, 184, 120, 0.35);
+  color: #e9cba8;
 }
 
 .closing span {
-  color: #b98c67;
+  color: #e8b96d;
 }
 
 .closing p {
@@ -512,6 +555,7 @@ p {
 }
 
 .closing strong {
+  color: #ffdfaa;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -525,9 +569,12 @@ p {
     font-size: 1rem;
   }
 
-  .details-card,
-  .rsvp-card {
+  .details-card {
     padding: 25px 18px;
+  }
+
+  .rsvp-card {
+    padding: 24px 18px;
   }
 
   .countdown {
@@ -545,6 +592,10 @@ p {
 
   .detail-row {
     gap: 8px;
+  }
+
+  #rsvpForm {
+    gap: 14px;
   }
 }
 
